@@ -36,6 +36,7 @@ export const messages = {
         telegram: 'Telegram',
         instagram: 'Instagram',
         tikTok: 'TikTok',
+        email: 'Email',
         offering: 'Offering',
         fundraising: 'Fundraising',
         realization: 'Realization',

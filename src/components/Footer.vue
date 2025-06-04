@@ -9,6 +9,7 @@
         <a href="#">{{ $t('telegram') }}</a>
         <a href="#">{{ $t('instagram') }}</a>
         <a href="#">{{ $t('tikTok') }}</a>
+        <a href="mailto:info@cementum.io">{{ $t('email') }}</a>
       </div>
     </div>
   </footer>
