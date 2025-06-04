@@ -72,9 +72,7 @@
             <div href="/public/images/projects/twins/7.jpg" class="photo-container-element">
               <img src="/public/images/projects/twins/7.jpg" />
             </div>
-            <div href="/public/images/projects/twins/8.jpg" class="photo-container-element">
-              <img src="/public/images/projects/twins/8.jpg" />
-            </div>
+
           </div>
         </div>
 
