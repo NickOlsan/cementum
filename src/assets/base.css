@@ -1,0 +1,54 @@
+body,html {
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  background:url('/public/images/fon.jpg');
+  padding:0;
+  margin:0;
+  color: #333333;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 140%;
+}
+*{
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+  outline: none;
+}
+::selection {
+  background: #23252a;
+  color: #fff;
+}
+#app {
+
+}
+
+a{
+  text-decoration: none;
+}
+
+ul{
+  list-style: none;
+  padding:0;
+  margin:0;
+}
+img{
+  display: block;
+  max-width:100%;
+  height: auto;
+}
+button{
+  background: none;
+  border: none;
+  padding:0;
+  margin:0;
+  outline: none;
+}
+
+.scroll::-webkit-scrollbar { width: 3px;}
+.scroll::-webkit-scrollbar-button {}
+.scroll::-webkit-scrollbar-track {}
+.scroll::-webkit-scrollbar-track-piece { background-color: #fff;}
+.scroll::-webkit-scrollbar-thumb { height: 0; background-color: #ccc; border-radius: 3px;}
+.scroll::-webkit-scrollbar-corner { background-color: #999;}
+.scroll::-webkit-resizer { background-color: #666;}
