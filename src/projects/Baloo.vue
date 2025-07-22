@@ -3,7 +3,7 @@
     <Header />
     <div class="page-project">
       <div class="project-banner" style="background: url('/images/projects/baloo/banner.png');background-size: cover;">
-        <img src="/public/images/arch.jpg" class="project-logo" alt="" title="">
+        <img src="/images/arch.jpg" class="project-logo" alt="" title="">
         <div class="project-title">Baloo</div>
         <div class="project-status">
           <span class="project-status-coming-soon">{{ $t('comingSoon') }}</span>
@@ -73,23 +73,23 @@
 
         <div class="photo-container">
           <div ref="galleryRef" class="gallery photo-container-elements">
-            <div href="/public/images/projects/baloo/1.jpg" class="photo-container-element">
-              <img src="/public/images/projects/baloo/1.jpg" />
+            <div href="/images/projects/baloo/1.jpg" class="photo-container-element">
+              <img src="/images/projects/baloo/1.jpg" />
             </div>
-            <div href="/public/images/projects/baloo/2.jpg" class="photo-container-element">
-              <img src="/public/images/projects/baloo/2.jpg" />
+            <div href="/images/projects/baloo/2.jpg" class="photo-container-element">
+              <img src="/images/projects/baloo/2.jpg" />
             </div>
-            <div href="/public/images/projects/baloo/3.jpg" class="photo-container-element">
-              <img src="/public/images/projects/baloo/3.jpg" />
+            <div href="/images/projects/baloo/3.jpg" class="photo-container-element">
+              <img src="/images/projects/baloo/3.jpg" />
             </div>
-            <div href="/public/images/projects/baloo/4.jpg" class="photo-container-element">
-              <img src="/public/images/projects/baloo/4.jpg" />
+            <div href="/images/projects/baloo/4.jpg" class="photo-container-element">
+              <img src="/images/projects/baloo/4.jpg" />
             </div>
-            <div href="/public/images/projects/baloo/5.jpg" class="photo-container-element">
-              <img src="/public/images/projects/baloo/5.jpg" />
+            <div href="/images/projects/baloo/5.jpg" class="photo-container-element">
+              <img src="/images/projects/baloo/5.jpg" />
             </div>
-            <div href="/public/images/projects/baloo/6.jpg" class="photo-container-element">
-              <img src="/public/images/projects/baloo/6.jpg" />
+            <div href="/images/projects/baloo/6.jpg" class="photo-container-element">
+              <img src="/images/projects/baloo/6.jpg" />
             </div>
           </div>
         </div>

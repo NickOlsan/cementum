@@ -3,7 +3,7 @@
     <Header />
     <div class="page-project">
       <div class="project-banner" style="background: url('/images/projects/mriya/banner.png');background-size: cover;">
-        <img src="/public/images/arch.jpg" class="project-logo" alt="" title="">
+        <img src="/images/arch.jpg" class="project-logo" alt="" title="">
         <div class="project-title">Mriya</div>
         <div class="project-status">
           <span class="project-status-selling">{{ $t('selling') }}</span>
@@ -85,17 +85,17 @@
 
         <div class="project-video">
           <video controls width="600">
-            <source src="/public/images/projects/mriya/video.mp4" type="video/mp4" />
+            <source src="/images/projects/mriya/video.mp4" type="video/mp4" />
           </video>
         </div>
 
         <div class="photo-container">
           <div ref="galleryRef" class="gallery photo-container-elements">
-            <div href="/public/images/projects/mriya/1.jpg" class="photo-container-element">
-              <img src="/public/images/projects/mriya/1.jpg" />
+            <div href="/images/projects/mriya/1.jpg" class="photo-container-element">
+              <img src="/images/projects/mriya/1.jpg" />
             </div>
-            <div href="/public/images/projects/mriya/2.jpg" class="photo-container-element">
-              <img src="/public/images/projects/mriya/2.jpg" />
+            <div href="/images/projects/mriya/2.jpg" class="photo-container-element">
+              <img src="/images/projects/mriya/2.jpg" />
             </div>
           </div>
         </div>

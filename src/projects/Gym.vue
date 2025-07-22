@@ -3,7 +3,7 @@
     <Header />
     <div class="page-project">
       <div class="project-banner" style="background: url('/images/projects/gym/banner.png');background-size: cover;">
-        <img src="/public/images/dogma.jpg" class="project-logo" alt="" title="">
+        <img src="/images/dogma.jpg" class="project-logo" alt="" title="">
         <div class="project-title">Gym</div>
         <div class="project-status">
           <span class="project-status-completed">{{ $t('completed') }}</span>
@@ -17,7 +17,7 @@
             <span class="project-stat-item-name">{{ $t('fundraising') }}</span>
           </div>
           <div class="project-stat-item">
-            <span class="project-stat-item-value">390k UIC</span>
+            <span class="project-stat-item-value">365k UIC</span>
             <span class="project-stat-item-name">{{ $t('realization') }}</span>
           </div>
           <div class="project-stat-item">
@@ -25,7 +25,7 @@
             <span class="project-stat-item-name">{{ $t('duration') }}</span>
           </div>
           <div class="project-stat-item">
-            <span class="project-stat-item-value">81</span>
+            <span class="project-stat-item-value">70%</span>
             <span class="project-stat-item-name">{{ $t('roi') }}</span>
           </div>
         </div>
@@ -50,17 +50,17 @@
 
         <div class="photo-container">
           <div ref="galleryRef" class="gallery photo-container-elements">
-            <div href="/public/images/projects/gym/1.jpg" class="photo-container-element">
-              <img src="/public/images/projects/gym/1.jpg" />
+            <div href="/images/projects/gym/1.jpg" class="photo-container-element">
+              <img src="/images/projects/gym/1.jpg" />
             </div>
-            <div href="/public/images/projects/gym/2.jpg" class="photo-container-element">
-              <img src="/public/images/projects/gym/2.jpg" />
+            <div href="/images/projects/gym/2.jpg" class="photo-container-element">
+              <img src="/images/projects/gym/2.jpg" />
             </div>
-            <div href="/public/images/projects/gym/3.jpg" class="photo-container-element">
-              <img src="/public/images/projects/gym/3.jpg" />
+            <div href="/images/projects/gym/3.jpg" class="photo-container-element">
+              <img src="/images/projects/gym/3.jpg" />
             </div>
-            <div href="/public/images/projects/gym/4.jpg" class="photo-container-element">
-              <img src="/public/images/projects/gym/4.jpg" />
+            <div href="/images/projects/gym/4.jpg" class="photo-container-element">
+              <img src="/images/projects/gym/4.jpg" />
             </div>
           </div>
         </div>

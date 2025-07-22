@@ -33,7 +33,15 @@ html,body{
     z-index:1;
 }
 @media (max-width: 1023px) {
-
+    .spot1{
+        display: none;
+    }
+    .spot2{
+        top:-100px;
+        width: 400px;
+        height: 500px;
+        transform:translateX(-50%);
+    }
 }
 .header{
     position:fixed;
@@ -54,7 +62,14 @@ html,body{
     padding:30px 10%;
 }
 .logo{
-
+    position: relative;
+    padding:0 0 0 80px;
+}
+.logo img{
+    position: absolute;
+    top:-17px;
+    left:0;
+    width: 70px;
 }
 .logo span{
     display:block;
@@ -66,8 +81,7 @@ html,body{
 .logo small{
     display:block;
     font-size:14px;
-    color:#d1c4e9;
-    text-align: center;
+    color:#ccc;
 }
 .header-panel{
     display:flex;
@@ -115,7 +129,7 @@ html,body{
     height:50px;
     border-radius:10px;
     background:rgba(0,0,0,0.2);
-    border: 2px solid #ef5350;
+    border: 2px solid #d10f3c;
     color:#fff;
     padding:0 20px;
     transition:.3s;
@@ -125,28 +139,43 @@ html,body{
     background:rgba(0,0,0,0.3);
     color:#fff;
 }
-.connected-button{
+.connect-button{
     display:flex;
     align-items:center;
     justify-content:center;
     height:50px;
     border-radius:10px;
-    background:#ef5350;
+    background:#d10f3c;
     padding:0 20px;
     transition:.3s;
+    cursor: pointer;
 }
-.connected-button:hover{
+.connect-button:hover{
     background:#f44336;
 }
-.connected-button img{
+.connect-button img{
     width:20px;
     margin:0 10px 0 0;
 }
-.connected-button span{
+.connect-button span{
     color:#fff;
     font-size:14px;
     font-weight:700;
 }
+.connected-button{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:50px;
+    width: 50px;
+    border-radius:10px;
+    background:#66bb6a;
+    transition:.3s;
+}
+.connected-button img{
+    width:20px;
+}
+
 @media (max-width: 1023px) {
     .header.active{
         position: static;
@@ -155,28 +184,32 @@ html,body{
         padding: 15px 20px;
     }
     .logo{
-
+        padding:0 0 0 50px;
+    }
+    .logo img{
+        width: 40px;
+        top:-5px;
     }
     .logo span {
-        font-size: 30px;
-        margin:0 0 5px 0;
+        font-size: 26px;
+        margin:0 0 0px 0;
     }
     .logo small {
-        font-size: 11px;
+        font-size: 10px;
     }
     .buy-button {
         height: 40px;
         padding: 0 10px;
         margin: 0 10px 0 0;
     }
-    .connected-button {
+    .connect-button {
         height: 40px;
         padding: 0 10px;
     }
-    .connected-button img{
+    .connect-button img{
         margin: 0;
     }
-    .connected-button span{
+    .connect-button span{
         display: none;
     }
 }
@@ -215,6 +248,12 @@ html,body{
     line-height: 150%;
     margin:0 0 20px 0;
 }
+.page-content h3{
+    font-size: 20px;
+    color: #fff;
+    line-height: 150%;
+    margin:0 0 20px 0;
+}
 .page-content p{
     font-size: 14px;
     color: #fff;
@@ -228,7 +267,8 @@ html,body{
     display: flex;
     font-size: 14px;
     color: #fff;
-    line-height: 150%;
+    line-height: 170%;
+    margin:0 0 10px 0;
 }
 .page-content ul li:before{
     content: '';
@@ -239,6 +279,36 @@ html,body{
     background: #fff;
     margin:6px 15px 0 0;
 }
+.page-content ul li b{
+    font-weight: 600;
+}
+.page-content a{
+    color: #fff;
+    text-decoration: underline;
+    margin:0 0 0 10px;
+}
+
+
+.page-content table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid white;
+    color: white;
+    margin:0 0 30px 0;
+}
+
+.page-content table td, table th {
+    border: 1px solid white;
+    padding: 8px;
+    text-align: left;
+}
+
+.page-content thead {
+
+}
+
+
+
 /**/
 .welcome-container{
     padding:0 10%;
@@ -260,7 +330,7 @@ html,body{
     color:#fff;
 }
 .welcome-title span:last-child{
-    color:#ef5350;
+    color:#d10f3c;
 }
 .welcome-elements{
     display:flex;
@@ -795,8 +865,65 @@ html,body{
 
 
 
+.staking-container{
 
-
+}
+.staking-section{
+    margin:0 0 30px 0;
+    background: rgba(0,0,0,0.1);
+    padding:30px;
+    border-radius: 5px;
+}
+.staking-section-title{
+    font-size: 20px;
+    color: #fff;
+    margin:0 0 20px 0;
+}
+.staking-field-container{
+    margin:0 0 20px 0;
+}
+.staking-field-label{
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    margin:0 0 15px 0;
+}
+.staking-field-controls{
+    display: flex;
+    align-items: center;
+}
+.staking-field-input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    min-width: 350px;
+    background: #262a30;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding:0 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+}
+.staking-field-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background: #2196f3;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    padding:0 20px;
+    cursor: pointer;
+    margin:0 0 0 10px;
+}
+.staking-field-button:hover{
+    background: #1e88e5;
+}
 /**/
 .project-timeline{
     margin:100px 0 150px 0;
@@ -916,7 +1043,7 @@ html,body{
 
 
 .project-video{
-
+    margin:0 0 20px 0;
 }
 .project-video video{
     display: block;
@@ -947,6 +1074,51 @@ html,body{
         width: calc(50% - 20px);
     }
 }
+
+
+.team-elements{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.team-element{
+    text-align: center;
+    padding:0 40px;
+    margin:0 0 50px 0;
+}
+.team-element-image{
+    margin:0 0 16px 0;
+}
+.team-element-image img{
+    display: block;
+    margin:0 auto;
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    border: 2px solid #fff;
+}
+.team-element-name{
+    font-size: 18px;
+    color: #fff;
+    margin:0 0 7px 0;
+}
+.team-element-position{
+    font-size: 14px;
+    color: #b0bec5;
+}
+@media (max-width: 748px) {
+    .team-elements{
+
+    }
+    .team-element{
+        padding:0 10px;
+    }
+    .team-element-image img{
+        width: 150px;
+        height: 150px;
+    }
+}
+
 
 
 .footer{

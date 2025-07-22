@@ -3,7 +3,7 @@
     <Header />
     <div class="page-project">
       <div class="project-banner" style="background: url('/images/projects/grande/banner.png');background-size: cover;">
-        <img src="/public/images/vizart.jpg" class="project-logo" alt="" title="">
+        <img src="/images/vizart.jpg" class="project-logo" alt="" title="">
         <div class="project-title">Grande</div>
         <div class="project-status">
           <span class="project-status-completed">{{ $t('completed') }}</span>
@@ -17,7 +17,7 @@
             <span class="project-stat-item-name">{{ $t('fundraising') }}</span>
           </div>
           <div class="project-stat-item">
-            <span class="project-stat-item-value">1.4m UIC</span>
+            <span class="project-stat-item-value">680k UIC</span>
             <span class="project-stat-item-name">{{ $t('realization') }}</span>
           </div>
           <div class="project-stat-item">
@@ -25,7 +25,7 @@
             <span class="project-stat-item-name">{{ $t('duration') }}</span>
           </div>
           <div class="project-stat-item">
-            <span class="project-stat-item-value">175</span>
+            <span class="project-stat-item-value">33%</span>
             <span class="project-stat-item-name">{{ $t('roi') }}</span>
           </div>
         </div>
@@ -50,29 +50,29 @@
 
         <div class="photo-container">
           <div ref="galleryRef" class="gallery photo-container-elements">
-            <div href="/public/images/projects/grande/1.jpg" class="photo-container-element">
-              <img src="/public/images/projects/grande/1.jpg" />
+            <div href="/images/projects/grande/1.jpg" class="photo-container-element">
+              <img src="/images/projects/grande/1.jpg" />
             </div>
-            <div href="/public/images/projects/grande/2.jpg" class="photo-container-element">
-              <img src="/public/images/projects/grande/2.jpg" />
+            <div href="/images/projects/grande/2.jpg" class="photo-container-element">
+              <img src="/images/projects/grande/2.jpg" />
             </div>
-            <div href="/public/images/projects/grande/3.jpg" class="photo-container-element">
-              <img src="/public/images/projects/grande/3.jpg" />
+            <div href="/images/projects/grande/3.jpg" class="photo-container-element">
+              <img src="/images/projects/grande/3.jpg" />
             </div>
-            <div href="/public/images/projects/grande/4.jpg" class="photo-container-element">
-              <img src="/public/images/projects/grande/4.jpg" />
+            <div href="/images/projects/grande/4.jpg" class="photo-container-element">
+              <img src="/images/projects/grande/4.jpg" />
             </div>
-            <div href="/public/images/projects/grande/5.jpg" class="photo-container-element">
-              <img src="/public/images/projects/grande/5.jpg" />
+            <div href="/images/projects/grande/5.jpg" class="photo-container-element">
+              <img src="/images/projects/grande/5.jpg" />
             </div>
-            <div href="/public/images/projects/grande/6.jpg" class="photo-container-element">
-              <img src="/public/images/projects/grande/6.jpg" />
+            <div href="/images/projects/grande/6.jpg" class="photo-container-element">
+              <img src="/images/projects/grande/6.jpg" />
             </div>
-            <div href="/public/images/projects/grande/7.jpg" class="photo-container-element">
-              <img src="/public/images/projects/grande/7.jpg" />
+            <div href="/images/projects/grande/7.jpg" class="photo-container-element">
+              <img src="/images/projects/grande/7.jpg" />
             </div>
-            <div href="/public/images/projects/grande/8.jpg" class="photo-container-element">
-              <img src="/public/images/projects/grande/8.jpg" />
+            <div href="/images/projects/grande/8.jpg" class="photo-container-element">
+              <img src="/images/projects/grande/8.jpg" />
             </div>
           </div>
         </div>

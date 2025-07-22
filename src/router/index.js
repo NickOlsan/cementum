@@ -3,8 +3,11 @@ import i18n from '@/i18n' // Импорт i18n для перевода
 
 // Импорт компонентов
 import HomePage from '@/pages/HomePage.vue'
-import AboutPage from '@/pages/AboutPage.vue'
 import WhitePaper from '@/pages/WhitePaper.vue'
+import Tokenomics from '@/pages/Tokenomics.vue'
+import TermsOfUse from '@/pages/TermsOfUse.vue'
+import PrivacyPolicy from '@/pages/PrivacyPolicy.vue'
+import OurTeam from '@/pages/OurTeam.vue'
 
 
 import Andre from '@/projects/Andre.vue'
@@ -20,14 +23,6 @@ import Wood from '@/projects/Wood.vue'
 
 const routes = [
     {
-        path: '/mriya',
-        component: Mriya,
-        meta: {
-            titleKey: 'metaTitleMriya',
-            descriptionKey: '',
-        }
-    },
-    {
         path: '/',
         component: HomePage,
         meta: {
@@ -36,19 +31,51 @@ const routes = [
         }
     },
     {
-        path: '/about',
-        component: AboutPage,
-        meta: {
-            titleKey: 'metaTitleAbout',
-            descriptionKey: 'metaDescriptionAbout'
-        }
-    },
-    {
         path: '/white-paper',
         component: WhitePaper,
         meta: {
             titleKey: 'metaTitleWhitePaper',
             descriptionKey: 'metaDescriptionWhitePaper'
+        }
+    },
+    {
+        path: '/tokenomics',
+        component: Tokenomics,
+        meta: {
+            titleKey: 'metaTitleTokenomics',
+            descriptionKey: 'metaDescriptionTokenomics'
+        }
+    },
+    {
+        path: '/terms-of-use',
+        component: TermsOfUse,
+        meta: {
+            titleKey: 'metaTitleTermsOfUse',
+            descriptionKey: 'metaDescriptionTermsOfUse'
+        }
+    },
+    {
+        path: '/privacy-policy',
+        component: PrivacyPolicy,
+        meta: {
+            titleKey: 'metaTitlePrivacyPolicy',
+            descriptionKey: 'metaDescriptionPrivacyPolicy'
+        }
+    },
+    {
+        path: '/our-team',
+        component: OurTeam,
+        meta: {
+            titleKey: 'metaTitleOurTeam',
+            descriptionKey: 'metaDescriptionOurTeam'
+        }
+    },
+    {
+        path: '/mriya',
+        component: Mriya,
+        meta: {
+            titleKey: 'metaTitleMriya',
+            descriptionKey: '',
         }
     },
     {

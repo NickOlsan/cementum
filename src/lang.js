@@ -13,10 +13,12 @@ export const messages = {
         navAbout: 'About Project',
         navTermsAndConditions: 'Terms And Conditions',
         navWhitePaper: 'White Paper',
+        navTokenomics: 'Tokenomics',
+        navOurTeam: 'OurTeam',
         buyUic: 'Buy UIC',
         connectWallet: 'Connect wallet',
-        welcomeTitle1: 'The Launchpad For',
-        welcomeTitle2: 'Real Founders',
+        welcomeTitle1: 'Safe cryptocurrency',
+        welcomeTitle2: 'Real estate investments',
         welcomeName1: 'Total Raised',
         welcomeName2: 'Total project',
         welcomeName3: 'Average ROI',
@@ -54,15 +56,30 @@ export const messages = {
         metaTitleHome: 'Cementum',
         metaDescriptionHome: '',
 
-        //About
-        pageAboutTitle: 'About Project',
-        metaTitleAbout: 'Cementum - About',
-        metaDescriptionAbout: '',
-
         //WhitePaper
-        pageWhitePaperTitle: 'WHITEPAPER: United Investment Company',
-        metaTitleWhitePaper: 'Cementum - White Paper',
+        pageWhitePaperTitle: 'Cementum White Paper',
+        metaTitleWhitePaper: 'Cementum White Paper',
         metaDescriptionWhitePaper: '',
+
+        //Tokenomics
+        pageTokenomicsTitle: 'UIC Tokenomics',
+        metaTitleTokenomics: 'UIC Tokenomics',
+        metaDescriptionTokenomics: '',
+
+        //TermsOfUse
+        pageTermsOfUseTitle: 'Terms Of Use',
+        metaTitleTermsOfUse: 'Terms Of Use',
+        metaDescriptionTermsOfUse: '',
+
+        //TermsOfUse
+        pagePrivacyPolicyTitle: 'Privacy policy',
+        metaTitlePrivacyPolicy: 'Privacy policy',
+        metaDescriptionPrivacyPolicy: '',
+
+        //OurTeam
+        pageOurTeamTitle: 'Our Team',
+        metaTitleOurTeam: 'Our Team',
+        metaDescriptionOurTeam: '',
 
         //Projects
         metaTitleAndre: 'Andre',

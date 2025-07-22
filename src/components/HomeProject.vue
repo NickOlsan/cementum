@@ -7,8 +7,8 @@
       <router-link class="future-element" to="/wood">
         <div class="future-element-avatar">
           <span class="future-element-label future-element-coming-soon">{{ $t('comingSoon') }}</span>
-          <img src="/public/images/projects/wood/preview.jpg" class="future-element-image img" alt="" title=""/>
-          <img src="/public/images/rk.jpg" class="future-element-brand" alt="" title=""/>
+          <img src="/images/projects/wood/preview.jpg" class="future-element-image img" alt="" title=""/>
+          <img src="/images/rk.jpg" class="future-element-brand" alt="" title=""/>
         </div>
         <div class="future-element-name">
           Wood
@@ -24,14 +24,14 @@
           </div>
         </div>
         <div class="future-element-control">
-          <a href="#" class="future-element-control-more">{{ $t('details') }}</a>
+          <span class="future-element-control-more">{{ $t('details') }}</span>
         </div>
       </router-link>
       <router-link class="future-element" to="/baloo">
         <div class="future-element-avatar">
           <span class="future-element-label future-element-coming-soon">{{ $t('comingSoon') }}</span>
-          <img src="/public/images/projects/baloo/preview.jpg" class="future-element-image img" alt="" title=""/>
-          <img src="/public/images/arch.jpg" class="future-element-brand" alt="" title=""/>
+          <img src="/images/projects/baloo/preview.jpg" class="future-element-image img" alt="" title=""/>
+          <img src="/images/arch.jpg" class="future-element-brand" alt="" title=""/>
         </div>
         <div class="future-element-name">
           Baloo
@@ -47,14 +47,14 @@
           </div>
         </div>
         <div class="future-element-control">
-          <a href="#" class="future-element-control-more">{{ $t('details') }}</a>
+          <span class="future-element-control-more">{{ $t('details') }}</span>
         </div>
       </router-link>
       <router-link class="future-element" to="/mriya">
           <div class="future-element-avatar">
             <span class="future-element-label future-element-selling">{{ $t('selling') }}</span>
-            <img src="/public/images/projects/mriya/preview.jpg" class="future-element-image img" alt="" title=""/>
-            <img src="/public/images/arch.jpg" class="future-element-brand" alt="" title=""/>
+            <img src="/images/projects/mriya/preview.jpg" class="future-element-image img" alt="" title=""/>
+            <img src="/images/arch.jpg" class="future-element-brand" alt="" title=""/>
           </div>
           <div class="future-element-name">
             Mriya
@@ -70,14 +70,14 @@
             </div>
           </div>
           <div class="future-element-control">
-            <a href="#" class="future-element-control-more">{{ $t('details') }}</a>
+            <span class="future-element-control-more">{{ $t('details') }}</span>
           </div>
       </router-link>
       <router-link class="future-element" to="/andre">
         <div class="future-element-avatar">
           <span class="future-element-label future-element-completed">{{ $t('completed') }}</span>
-          <img src="/public/images/projects/andre/preview.jpg" class="future-element-image img" alt="" title=""/>
-          <img src="/public/images/rk.jpg" class="future-element-brand" alt="" title=""/>
+          <img src="/images/projects/andre/preview.jpg" class="future-element-image img" alt="" title=""/>
+          <img src="/images/rk.jpg" class="future-element-brand" alt="" title=""/>
         </div>
         <div class="future-element-name">
           Andre
@@ -88,23 +88,23 @@
             <small>{{ $t('fundraising') }}</small>
           </div>
           <div class="future-element-date">
-            <span>1.15m UIC</span>
+            <span>680k UIC</span>
             <small>{{ $t('realization') }}</small>
           </div>
           <div class="future-element-date">
-            <span>174</span>
+            <span>62%</span>
             <small>{{ $t('roi') }}</small>
           </div>
         </div>
         <div class="future-element-control">
-          <a href="#" class="future-element-control-more">{{ $t('details') }}</a>
+          <span class="future-element-control-more">{{ $t('details') }}</span>
         </div>
       </router-link>
       <router-link class="future-element" to="/grande">
         <div class="future-element-avatar">
           <span class="future-element-label future-element-completed">{{ $t('completed') }}</span>
-          <img src="/public/images/projects/grande/preview.jpg" class="future-element-image img" alt="" title=""/>
-          <img src="/public/images/vizart.jpg" class="future-element-brand" alt="" title=""/>
+          <img src="/images/projects/grande/preview.jpg" class="future-element-image img" alt="" title=""/>
+          <img src="/images/vizart.jpg" class="future-element-brand" alt="" title=""/>
         </div>
         <div class="future-element-name">
           Grande
@@ -115,77 +115,77 @@
             <small>{{ $t('fundraising') }}</small>
           </div>
           <div class="future-element-date">
-            <span>1.4m UIC</span>
+            <span>680k UIC</span>
             <small>{{ $t('realization') }}</small>
           </div>
           <div class="future-element-date">
-            <span>175</span>
+            <span>33%</span>
             <small>{{ $t('roi') }}</small>
           </div>
         </div>
         <div class="future-element-control">
-          <a href="#" class="future-element-control-more">{{ $t('details') }}</a>
+          <span class="future-element-control-more">{{ $t('details') }}</span>
         </div>
       </router-link>
       <router-link class="future-element" to="/tempo">
         <div class="future-element-avatar">
           <span class="future-element-label future-element-completed">{{ $t('completed') }}</span>
-          <img src="/public/images/projects/tempo/preview.jpg" class="future-element-image img" alt="" title=""/>
-          <img src="/public/images/rk.jpg" class="future-element-brand" alt="" title=""/>
+          <img src="/images/projects/tempo/preview.jpg" class="future-element-image img" alt="" title=""/>
+          <img src="/images/rk.jpg" class="future-element-brand" alt="" title=""/>
         </div>
         <div class="future-element-name">
           Tempo
         </div>
         <div class="future-element-footer">
           <div class="future-element-price">
-            <span>390k UIC</span>
+            <span>760k UIC</span>
             <small>{{ $t('fundraising') }}</small>
           </div>
           <div class="future-element-date">
-            <span>760m UIC</span>
+            <span>1.1m UIC</span>
             <small>{{ $t('realization') }}</small>
           </div>
           <div class="future-element-date">
-            <span>95</span>
+            <span>45%</span>
             <small>{{ $t('roi') }}</small>
           </div>
         </div>
         <div class="future-element-control">
-          <a href="#" class="future-element-control-more">{{ $t('details') }}</a>
+          <span class="future-element-control-more">{{ $t('details') }}</span>
         </div>
       </router-link>
       <router-link class="future-element" to="/twins">
         <div class="future-element-avatar">
           <span class="future-element-label future-element-completed">{{ $t('completed') }}</span>
-          <img src="/public/images/projects/twins/preview.jpg" class="future-element-image img" alt="" title=""/>
-          <img src="/public/images/arch.jpg" class="future-element-brand" alt="" title=""/>
+          <img src="/images/projects/twins/preview.jpg" class="future-element-image img" alt="" title=""/>
+          <img src="/images/arch.jpg" class="future-element-brand" alt="" title=""/>
         </div>
         <div class="future-element-name">
           Twins
         </div>
         <div class="future-element-footer">
           <div class="future-element-price">
-            <span>220k UIC</span>
+            <span>228k UIC</span>
             <small>{{ $t('fundraising') }}</small>
           </div>
           <div class="future-element-date">
-            <span>380k UIC</span>
+            <span>370k UIC</span>
             <small>{{ $t('realization') }}</small>
           </div>
           <div class="future-element-date">
-            <span>73</span>
+            <span>62%</span>
             <small>{{ $t('roi') }}</small>
           </div>
         </div>
         <div class="future-element-control">
-          <a href="#" class="future-element-control-more">{{ $t('details') }}</a>
+          <span class="future-element-control-more">{{ $t('details') }}</span>
         </div>
       </router-link>
       <router-link class="future-element" to="/gym">
         <div class="future-element-avatar">
           <span class="future-element-label future-element-completed">{{ $t('completed') }}</span>
-          <img src="/public/images/projects/gym/preview.jpg" class="future-element-image img" alt="" title=""/>
-          <img src="/public/images/dogma.jpg" class="future-element-brand" alt="" title=""/>
+          <img src="/images/projects/gym/preview.jpg" class="future-element-image img" alt="" title=""/>
+          <img src="/images/dogma.jpg" class="future-element-brand" alt="" title=""/>
         </div>
         <div class="future-element-name">
           Gym
@@ -196,23 +196,23 @@
             <small>{{ $t('fundraising') }}</small>
           </div>
           <div class="future-element-date">
-            <span>390k UIC</span>
+            <span>365k UIC</span>
             <small>{{ $t('realization') }}</small>
           </div>
           <div class="future-element-date">
-            <span>81</span>
+            <span>70%</span>
             <small>{{ $t('roi') }}</small>
           </div>
         </div>
         <div class="future-element-control">
-          <a href="#" class="future-element-control-more">{{ $t('details') }}</a>
+          <span class="future-element-control-more">{{ $t('details') }}</span>
         </div>
       </router-link>
       <router-link class="future-element" to="/maximus">
         <div class="future-element-avatar">
           <span class="future-element-label future-element-completed">{{ $t('completed') }}</span>
-          <img src="/public/images/projects/maximus/preview.jpg" class="future-element-image img" alt="" title=""/>
-          <img src="/public/images/dogma.jpg" class="future-element-brand" alt="" title=""/>
+          <img src="/images/projects/maximus/preview.jpg" class="future-element-image img" alt="" title=""/>
+          <img src="/images/dogma.jpg" class="future-element-brand" alt="" title=""/>
         </div>
         <div class="future-element-name">
           Maximus
@@ -223,23 +223,23 @@
             <small>{{ $t('fundraising') }}</small>
           </div>
           <div class="future-element-date">
-            <span>1.48m UIC</span>
+            <span>890k UIC</span>
             <small>{{ $t('realization') }}</small>
           </div>
           <div class="future-element-date">
-            <span>132</span>
+            <span>39%</span>
             <small>{{ $t('roi') }}</small>
           </div>
         </div>
         <div class="future-element-control">
-          <a href="#" class="future-element-control-more">{{ $t('details') }}</a>
+          <span class="future-element-control-more">{{ $t('details') }}</span>
         </div>
       </router-link>
       <router-link class="future-element" to="/chalet-marron">
         <div class="future-element-avatar">
           <span class="future-element-label future-element-completed">{{ $t('completed') }}</span>
-          <img src="/public/images/projects/chalet-marron/preview.jpg" class="future-element-image img" alt="" title=""/>
-          <img src="/public/images/arch.jpg" class="future-element-brand" alt="" title=""/>
+          <img src="/images/projects/chalet-marron/preview.jpg" class="future-element-image img" alt="" title=""/>
+          <img src="/images/arch.jpg" class="future-element-brand" alt="" title=""/>
         </div>
         <div class="future-element-name">
           Chalet Marron
@@ -250,16 +250,16 @@
             <small>{{ $t('fundraising') }}</small>
           </div>
           <div class="future-element-date">
-            <span>285k UIC</span>
+            <span>245k UIC</span>
             <small>{{ $t('realization') }}</small>
           </div>
           <div class="future-element-date">
-            <span>73</span>
+            <span>48%</span>
             <small>{{ $t('roi') }}</small>
           </div>
         </div>
         <div class="future-element-control">
-          <a href="#" class="future-element-control-more">{{ $t('details') }}</a>
+          <span class="future-element-control-more">{{ $t('details') }}</span>
         </div>
       </router-link>
     </div>

@@ -3,7 +3,7 @@
     <Header />
     <div class="page-project">
       <div class="project-banner" style="background: url('/images/projects/twins/banner.png');background-size: cover;">
-        <img src="/public/images/arch.jpg" class="project-logo" alt="" title="">
+        <img src="/images/arch.jpg" class="project-logo" alt="" title="">
         <div class="project-title">Twins</div>
         <div class="project-status">
           <span class="project-status-completed">{{ $t('completed') }}</span>
@@ -13,11 +13,11 @@
 
         <div class="project-stat-container">
           <div class="project-stat-item">
-            <span class="project-stat-item-value">220k UIC</span>
+            <span class="project-stat-item-value">228k UIC</span>
             <span class="project-stat-item-name">{{ $t('fundraising') }}</span>
           </div>
           <div class="project-stat-item">
-            <span class="project-stat-item-value">380k UIC</span>
+            <span class="project-stat-item-value">370k UIC</span>
             <span class="project-stat-item-name">{{ $t('realization') }}</span>
           </div>
           <div class="project-stat-item">
@@ -25,7 +25,7 @@
             <span class="project-stat-item-name">{{ $t('duration') }}</span>
           </div>
           <div class="project-stat-item">
-            <span class="project-stat-item-value">73</span>
+            <span class="project-stat-item-value">62%</span>
             <span class="project-stat-item-name">{{ $t('roi') }}</span>
           </div>
         </div>
@@ -49,28 +49,34 @@
           </div>
         </div>
 
+        <div class="project-video">
+          <video controls width="600">
+            <source src="/images/projects/twins/video.mp4" type="video/mp4" />
+          </video>
+        </div>
+
         <div class="photo-container">
           <div ref="galleryRef" class="gallery photo-container-elements">
-            <div href="/public/images/projects/twins/1.jpg" class="photo-container-element">
-              <img src="/public/images/projects/twins/1.jpg" />
+            <div href="/images/projects/twins/1.jpg" class="photo-container-element">
+              <img src="/images/projects/twins/1.jpg" />
             </div>
-            <div href="/public/images/projects/twins/2.jpg" class="photo-container-element">
-              <img src="/public/images/projects/twins/2.jpg" />
+            <div href="/images/projects/twins/2.jpg" class="photo-container-element">
+              <img src="/images/projects/twins/2.jpg" />
             </div>
-            <div href="/public/images/projects/twins/3.jpg" class="photo-container-element">
-              <img src="/public/images/projects/twins/3.jpg" />
+            <div href="/images/projects/twins/3.jpg" class="photo-container-element">
+              <img src="/images/projects/twins/3.jpg" />
             </div>
-            <div href="/public/images/projects/twins/4.jpg" class="photo-container-element">
-              <img src="/public/images/projects/twins/4.jpg" />
+            <div href="/images/projects/twins/4.jpg" class="photo-container-element">
+              <img src="/images/projects/twins/4.jpg" />
             </div>
-            <div href="/public/images/projects/twins/5.jpg" class="photo-container-element">
-              <img src="/public/images/projects/twins/5.jpg" />
+            <div href="/images/projects/twins/5.jpg" class="photo-container-element">
+              <img src="/images/projects/twins/5.jpg" />
             </div>
-            <div href="/public/images/projects/twins/6.jpg" class="photo-container-element">
-              <img src="/public/images/projects/twins/6.jpg" />
+            <div href="/images/projects/twins/6.jpg" class="photo-container-element">
+              <img src="/images/projects/twins/6.jpg" />
             </div>
-            <div href="/public/images/projects/twins/7.jpg" class="photo-container-element">
-              <img src="/public/images/projects/twins/7.jpg" />
+            <div href="/images/projects/twins/7.jpg" class="photo-container-element">
+              <img src="/images/projects/twins/7.jpg" />
             </div>
 
           </div>
