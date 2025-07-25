@@ -94,6 +94,8 @@
           </div>
         </div>
 
+        <StakingComponent contractAddress="0xcd81995A0E402AA87C7656d457424Ab0E665D981" />
+
       </div>
 
     </div>
@@ -116,6 +118,7 @@ import 'lightgallery/css/lg-thumbnail.css'
 // Плагины
 import lgZoom from 'lightgallery/plugins/zoom'
 import lgThumbnail from 'lightgallery/plugins/thumbnail'
+import StakingComponent from "@/components/StakingComponent.vue";
 
 const activeTab = ref('tab1')
 
