@@ -40,9 +40,8 @@
 import {ref, onMounted, watch, computed} from 'vue';
 import Web3 from 'web3';
 import {useWalletStore} from '../stores/wallet';
-import {stakingAbi} from '../abis/stakingAbi.js';
+import {stakingAbi, erc20Abi} from '../abis/stakingAbi.js';
 import {storeToRefs} from "pinia";
-import erc20Abi from '../abis/erc20Abi.json';
 
 const props = defineProps({
     contractAddress: {
