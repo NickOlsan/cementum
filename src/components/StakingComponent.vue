@@ -2,41 +2,34 @@
     <div class="staking-container">
         <h2>Информация о контракте</h2>
         <div v-if="contractStats" class="stats-box">
-            <p>Общий стейк: {{ formatBigInt(contractStats.totalStaked) }}</p>
-            <p>Общие награды: {{ formatBigInt(contractStats.totalRewards) }}</p>
-            <p>Максимальный стейк: {{ formatBigInt(contractStats.maxStakingAmount) }}</p>
+            <p>Сумма сбора: {{ formatBigInt(contractStats.maxStakingAmount) }}</p>
+            <p>Всего застейкано: {{ formatBigInt(contractStats.totalStaked) }}</p>
+            <p>Всего наград: {{ formatBigInt(contractStats.totalRewards) }}</p>
             <p>Количество стейкеров: {{ formatBigInt(contractStats.stakersCount, 0) }}</p>
-            <p>Не востребованные награды: {{ formatBigInt(contractStats.unclaimedRewardsCount, 0) }}</p>
             <p>Время начала стейкинга: {{
                     new Date(Number(contractStats.stakingStartTime) * 1000).toLocaleString()
                 }}</p>
             <p>Продолжительность стейкинга: {{ Number(contractStats.stakingDuration) / 86400 }} дней</p>
-            <p>Время разблокировки: {{ new Date(Number(contractStats.unlockTime) * 1000).toLocaleString() }}</p>
-            <p>Вывод разрешен: {{ contractStats.withdrawalsEnabled ? 'Да' : 'Нет' }}</p>
-            <p>Награды установлены: {{ contractStats.rewardsSet ? 'Да' : 'Нет' }}</p>
             <p>Токен стейкинга: {{ contractStats.stakingToken }}</p>
             <p>Токен наград: {{ contractStats.rewardsToken }}</p>
-            <p>Общие заявленные награды: {{ formatBigInt(contractStats.totalClaimedRewards) }}</p>
+            <p>Наград выдано: {{ formatBigInt(contractStats.totalClaimedRewards) }}</p>
         </div>
 
         <h2>Ваша информация</h2>
         <div v-if="userInfo" class="user-box">
             <p>Адрес кошелька: {{ walletAddress }}</p>
             <p>Сумма стейка: {{ formatBigInt(userInfo.amount) }}</p>
-            <p>Время стейкинга: {{ new Date(Number(userInfo.stakedAt) * 1000).toLocaleString() }}</p>
-            <p>Вывод произведен: {{ userInfo.hasWithdrawn ? 'Да' : 'Нет' }}</p>
-            <p>Награда заявлена: {{ userInfo.hasClaimedReward ? 'Да' : 'Нет' }}</p>
             <p>Награда: {{ formatBigInt(userInfo.reward) }}</p>
-            <p>Можно заявить все: {{ userInfo.canClaimAll ? 'Да' : 'Нет' }}</p>
+            <p>Награды собраны: {{ userInfo.hasWithdrawn ? 'Да' : 'Нет' }}</p>
         </div>
 
         <h2>Действия</h2>
         <button v-if="!walletAddress" class="project-status-coming-soon" @click="connectWallet()">Connect Wallet</button>
-        <form v-else @submit.prevent="stake()">
+        <form v-else>
             <label>Сумма для стейкинга</label>
             <input v-model="stakeAmount" type="text" required />
             <button v-if="!isApproved" class="project-status-coming-soon" type="button" :disabled="approving" @click="approve()">Approve</button>
-            <button v-else class="project-status-coming-soon" type="submit">Stake</button>
+            <button v-else class="project-status-coming-soon" type="button" :disabled="!isStakingActive" @click="stake()">Stake</button>
             <button class="project-status-coming-soon" type="button" :disabled="!userInfo?.canClaimAll" @click="claimAll()">Claim all</button>
         </form>
         <div class="status" :class="{ error: statusError, success: !statusError }">{{ status }}</div>
@@ -44,7 +37,7 @@
 </template>
 
 <script setup>
-import {ref, onMounted, watch} from 'vue';
+import {ref, onMounted, watch, computed} from 'vue';
 import Web3 from 'web3';
 import {useWalletStore} from '../stores/wallet';
 import {stakingAbi} from '../abis/stakingAbi.js';
@@ -74,6 +67,13 @@ const allowance = ref('0');
 const isApproved = ref(false);
 const approving = ref(false);
 let stakingTokenContract;
+const isStakingActive = computed(() => {
+  if (!contractStats.value) return false;
+  const now = Math.floor(Date.now() / 1000);
+  const start = Number(contractStats.value.stakingStartTime);
+  const end = start + Number(contractStats.value.stakingDuration);
+  return now >= start && now <= end;
+});
 
 function formatBigInt(value, unit = 'ether') {
   return web3.utils.fromWei(value, unit);
@@ -183,8 +183,9 @@ async function getUserBalance() {
   } catch (err) {
     console.error('getUserBalance error:', err);
     return BigInt(0);
+  } finally {
+      console.log('getUserBalance ended');
   }
-  console.log('getUserBalance ended');
 }
 
 async function setMaxStakeAmount() {
