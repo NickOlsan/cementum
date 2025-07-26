@@ -31,12 +31,13 @@
         </div>
 
         <h2>Действия</h2>
-        <form @submit.prevent="stake">
+        <button v-if="!walletAddress" class="project-status-coming-soon" @click="connectWallet()">Connect Wallet</button>
+        <form v-else @submit.prevent="stake()">
             <label>Сумма для стейкинга</label>
-            <input v-model="stakeAmount" type="text" required/>
-            <button v-if="!isApproved" class="project-status-coming-soon" type="button" :disabled="!walletAddress || approving" @click="!walletAddress ? connectWallet() : approve()">Approve</button>
-            <button v-else class="project-status-coming-soon" type="submit" :disabled="!walletAddress" @click="!walletAddress && connectWallet()">Stake</button>
-            <button class="project-status-coming-soon" type="button" :disabled="!userInfo?.canClaimAll" @click="!walletAddress ? connectWallet() : claimAll()">Claim all</button>
+            <input v-model="stakeAmount" type="text" required />
+            <button v-if="!isApproved" class="project-status-coming-soon" type="button" :disabled="approving" @click="approve()">Approve</button>
+            <button v-else class="project-status-coming-soon" type="submit">Stake</button>
+            <button class="project-status-coming-soon" type="button" :disabled="!userInfo?.canClaimAll" @click="claimAll()">Claim all</button>
         </form>
         <div class="status" :class="{ error: statusError, success: !statusError }">{{ status }}</div>
     </div>

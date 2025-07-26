@@ -14,11 +14,9 @@ export const useWalletStore = defineStore('wallet', () => {
             const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
             walletAddress.value = accounts[0];
             localStorage.setItem('walletAddress', accounts[0]);
-            alert(`Вы успешно вошли как ${accounts[0]}`);
             return true;
         } catch (err) {
             console.error('MetaMask Error:', err);
-            alert(`Ошибка авторизации: ${err.message || err}`);
         }
         return false;
     };
