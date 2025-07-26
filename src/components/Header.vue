@@ -32,7 +32,6 @@
 <script setup>
 import { useI18n } from 'vue-i18n';
 import { computed, ref, onMounted, onUnmounted } from 'vue';
-import Web3 from 'web3';
 
 // --- Языки
 const { locale } = useI18n();
@@ -62,7 +61,7 @@ const handleScroll = () => {
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
-  checkSession(); // Проверяем сессию при загрузке
+  autoConnect();
 });
 
 onUnmounted(() => {
@@ -70,57 +69,12 @@ onUnmounted(() => {
 });
 
 // --- Авторизация MetaMask
-const walletAddress = ref('');
+import { useWalletStore } from '../stores/wallet';
+const walletStore = useWalletStore();
+const walletAddress = computed(() => walletStore.walletAddress);
 
-const connectWallet = async () => {
-  if (typeof window.ethereum === 'undefined') {
-    alert('MetaMask не установлен!');
-    return;
-  }
+const connectWallet = () => walletStore.connectWallet();
 
-  try {
-    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-    const address = accounts[0];
-
-    const message = 'Подтвердите вход на сайт';
-
-    const signature = await window.ethereum.request({
-      method: 'personal_sign',
-      params: [message, address, ''],
-    });
-
-    const response = await fetch('https://cementum.io/wallet-auth.php', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ address, signature }),
-    });
-
-    // ✅ читаем body только один раз
-    const result = await response.json();
-
-    if (result.status === 'ok') {
-      walletAddress.value = address;
-      localStorage.setItem('walletAddress', address);
-      alert(`Вы успешно вошли как ${address}`);
-    } else {
-      alert('Ошибка авторизации на сервере');
-    }
-  } catch (err) {
-    console.error('MetaMask Error:', err);
-    alert(`Ошибка авторизации: ${err.message || err}`);
-  }
-};
-
-const checkSession = async () => {
-  try {
-    const res = await fetch('https://cementum.io/check-session.php');
-    const data = await res.json();
-    if (data.wallet) {
-      walletAddress.value = data.wallet;
-    }
-  } catch (err) {
-    console.warn('Не удалось проверить сессию:', err);
-  }
-};
+const autoConnect = () => walletStore.autoConnect();
 </script>
 
