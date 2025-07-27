@@ -28,7 +28,7 @@
         <form v-else>
             <label>Сумма для стейкинга</label>
             <input v-model="stakeAmount" type="text" required />
-            <button v-if="!isApproved" class="project-status-coming-soon" type="button" :disabled="approving" @click="approve()">Approve</button>
+            <button v-if="!isApproved && isStakingActive" class="project-status-coming-soon" type="button" :disabled="approving" @click="approve()">Approve</button>
             <button v-else class="project-status-coming-soon" type="button" :disabled="!isStakingActive" @click="stake()">Stake</button>
             <button class="project-status-coming-soon" type="button" :disabled="!userInfo?.canClaimAll" @click="claimAll()">Claim all</button>
         </form>
@@ -66,12 +66,20 @@ const allowance = ref('0');
 const isApproved = ref(false);
 const approving = ref(false);
 let stakingTokenContract;
+const userBalance = ref(BigInt(0));
 const isStakingActive = computed(() => {
-  if (!contractStats.value) return false;
+  if (!contractStats.value || !stakeAmount.value) return false;
   const now = Math.floor(Date.now() / 1000);
   const start = Number(contractStats.value.stakingStartTime);
   const end = start + Number(contractStats.value.stakingDuration);
-  return now >= start && now <= end;
+  let amountInWei;
+  try {
+    amountInWei = web3.utils.toWei(stakeAmount.value, 'ether');
+  } catch (e) {
+    return false;
+  }
+  const bigAmount = BigInt(amountInWei);
+  return now >= start && now <= end && bigAmount > BigInt(0) && bigAmount <= userBalance.value;
 });
 
 function formatBigInt(value, unit = 'ether') {
@@ -133,7 +141,10 @@ async function stake() {
         let cleanedAmount = stakeAmount.value;
         const amountInWei = web3.utils.toWei(cleanedAmount, 'ether');
         console.log('amountInWei:', amountInWei);
-        await stakingContract.methods.stake(amountInWei).send({from: walletAddress.value});
+        const estimatedGas = await stakingContract.methods.stake(amountInWei).estimateGas({from: walletAddress.value});
+        const gasWithBuffer = Math.ceil(Number(estimatedGas) * 1.05);
+        const gasPrice = await web3.eth.getGasPrice();
+        await stakingContract.methods.stake(amountInWei).send({from: walletAddress.value, gas: gasWithBuffer, gasPrice: gasPrice});
         console.log('Stake transaction successful');
         status.value = 'Стейк успешен';
         statusError.value = false;
@@ -155,7 +166,10 @@ async function claimAll() {
         return;
     }
     try {
-        await stakingContract.methods.claimAll().send({from: walletAddress.value});
+        const estimatedGas = await stakingContract.methods.claimAll().estimateGas({from: walletAddress.value});
+        const gasWithBuffer = Math.ceil(Number(estimatedGas) * 1.05);
+        const gasPrice = await web3.eth.getGasPrice();
+        await stakingContract.methods.claimAll().send({from: walletAddress.value, gas: gasWithBuffer, gasPrice: gasPrice});
         console.log('claimAll transaction successful');
         status.value = 'Заявка наград успешна';
         statusError.value = false;
@@ -194,6 +208,7 @@ async function setMaxStakeAmount() {
     return;
   }
   const balance = await getUserBalance();
+  userBalance.value = balance;
   const maxStaking = BigInt(contractStats.value.maxStakingAmount);
   const totalStaked = BigInt(contractStats.value.totalStaked);
   const capacity = maxStaking - totalStaked;
@@ -280,7 +295,11 @@ async function approve() {
   try {
     const amountInWei = web3.utils.toWei(stakeAmount.value, 'ether');
     console.log('approve amountInWei:', amountInWei);
-    await stakingTokenContract.methods.approve(props.contractAddress, amountInWei).send({from: walletAddress.value});
+    const estimatedGas = await stakingTokenContract.methods.approve(props.contractAddress, amountInWei).estimateGas({from: walletAddress.value});
+    const gasWithBuffer = Math.ceil(Number(estimatedGas) * 1.05);
+    const gasPrice = await web3.eth.getGasPrice();
+      console.log('approve amountInWei:', { amountInWei, estimatedGas, gasWithBuffer, gasPrice});
+    await stakingTokenContract.methods.approve(props.contractAddress, amountInWei).send({from: walletAddress.value, gas: gasWithBuffer, gasPrice: gasPrice});
     console.log('Approve transaction successful');
     await checkAllowance();
     status.value = 'Аппрув успешен';
