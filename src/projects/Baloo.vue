@@ -94,7 +94,7 @@
           </div>
         </div>
 
-        <StakingComponent contractAddress="0xC6a95315b986C10b568a057873a00Abb311e188e" />
+        <StakingComponent contractAddress="0x349f3f6a6B6699AAB39E68eF3061584588D6E633" />
 
       </div>
 

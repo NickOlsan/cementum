@@ -328,19 +328,6 @@ export const stakingAbi = [
         "type": "function"
     },
     {
-        "inputs": [],
-        "name": "getStakersCount",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
         "inputs": [
             {
                 "internalType": "address",
@@ -353,11 +340,6 @@ export const stakingAbi = [
             {
                 "internalType": "uint256",
                 "name": "amount",
-                "type": "uint256"
-            },
-            {
-                "internalType": "uint256",
-                "name": "stakedAt",
                 "type": "uint256"
             },
             {
@@ -374,37 +356,6 @@ export const stakingAbi = [
                 "internalType": "uint256",
                 "name": "reward",
                 "type": "uint256"
-            },
-            {
-                "internalType": "bool",
-                "name": "canClaimAll",
-                "type": "bool"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "isStakingActive",
-        "outputs": [
-            {
-                "internalType": "bool",
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "isUnlocked",
-        "outputs": [
-            {
-                "internalType": "bool",
-                "name": "",
-                "type": "bool"
             }
         ],
         "stateMutability": "view",
@@ -523,25 +474,6 @@ export const stakingAbi = [
     {
         "inputs": [
             {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "name": "stakers",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
                 "internalType": "address",
                 "name": "",
                 "type": "address"
@@ -552,11 +484,6 @@ export const stakingAbi = [
             {
                 "internalType": "uint256",
                 "name": "amount",
-                "type": "uint256"
-            },
-            {
-                "internalType": "uint256",
-                "name": "stakedAt",
                 "type": "uint256"
             },
             {
@@ -607,6 +534,19 @@ export const stakingAbi = [
                 "internalType": "contract IERC20",
                 "name": "",
                 "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "totalClaimedRewards",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
             }
         ],
         "stateMutability": "view",
@@ -666,6 +606,19 @@ export const stakingAbi = [
     },
     {
         "inputs": [],
+        "name": "uniqueStakersCount",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
         "name": "unlockTime",
         "outputs": [
             {
@@ -691,7 +644,6 @@ export const stakingAbi = [
         "type": "function"
     }
 ];
-
 export const erc20Abi = [
     {
         "inputs": [],
