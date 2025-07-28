@@ -30,7 +30,7 @@
             <input v-model="stakeAmount" type="text" required />
             <button v-if="!isApproved && isStakingActive" class="project-status-coming-soon" type="button" :disabled="approving" @click="approve()">Approve</button>
             <button v-else class="project-status-coming-soon" type="button" :disabled="!isStakingActive" @click="stake()">Stake</button>
-            <button class="project-status-coming-soon" type="button" :disabled="!userInfo?.canClaimAll" @click="claimAll()">Claim all</button>
+            <button class="project-status-coming-soon" type="button" :disabled="!canClaimAll" @click="claimAll()">Claim all</button>
         </form>
         <div class="status" :class="{ error: statusError, success: !statusError }">{{ status }}</div>
     </div>
@@ -80,6 +80,15 @@ const isStakingActive = computed(() => {
   }
   const bigAmount = BigInt(amountInWei);
   return now >= start && now <= end && bigAmount > BigInt(0) && bigAmount <= userBalance.value;
+});
+const canClaimAll = computed(() => {
+    if (!contractStats.value) {
+        return false;
+    }
+
+    const unlockTimestamp = Number(contractStats.value.unlockTime) * 1000;
+
+    return !userInfo.value.hasWithdrawn && (contractStats.value.withdrawalsEnabled || unlockTimestamp < Date.now());
 });
 
 function formatBigInt(value, unit = 'ether') {
