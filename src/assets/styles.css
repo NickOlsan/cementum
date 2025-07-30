@@ -906,8 +906,10 @@ html,body{
 .staking-form-button-stake{
 
 }
-.staking-form-button-claim-all{
-    display: none;
+.staking-form-button-claim-all:disabled{
+    background: rgba(255,255,255,0.1);
+    margin:20px 0 0 0;
+    cursor: not-allowed;
 }
 
 

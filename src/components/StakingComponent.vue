@@ -6,12 +6,16 @@
           <span class="staking-container-stat-value">Ends in {{ props.months }} months</span>
         </div>
         <div class="staking-container-stat">
+          <span class="staking-container-stat-name">Fundraising</span>
+          <span class="staking-container-stat-value">{{ formatBigInt(contractStats?.maxStakingAmount) }} UIC</span>
+        </div>
+        <div class="staking-container-stat">
           <span class="staking-container-stat-name">Chain</span>
           <span class="staking-container-stat-value">BNB</span>
         </div>
         <div class="staking-container-stat">
           <span class="staking-container-stat-name">Stakes</span>
-          <span class="staking-container-stat-value">184,075.7 UIC</span>
+          <span class="staking-container-stat-value">{{ formatBigInt(contractStats?.totalStaked) }} UIC</span>
         </div>
       </div>
       <div class="staking-container-b">
@@ -22,40 +26,40 @@
         <div class="staking-container-b-body">
           <div class="staking-container-b-body-row">
             <span>Staked</span>
-            <span>0 UIC</span>
+            <span>{{ formatBigInt(userInfo?.amount) }} UIC</span>
           </div>
           <div class="staking-container-b-body-row">
             <span>Yield</span>
-            <span>0 UIC</span>
+            <span>{{ formatBigInt(userInfo?.reward) }} UIC</span>
           </div>
         </div>
 
-        <div v-if="contractStats" class="stats-box">
-          <p>Сумма сбора: {{ formatBigInt(contractStats.maxStakingAmount) }}</p>
-          <p>Всего застейкано: {{ formatBigInt(contractStats.totalStaked) }}</p>
-          <p>Всего наград: {{ formatBigInt(contractStats.totalRewards) }}</p>
-          <p>Количество стейкеров: {{ formatBigInt(contractStats.stakersCount, 0) }}</p>
-          <p>Время начала стейкинга: {{
-              new Date(Number(contractStats.stakingStartTime) * 1000).toLocaleString()
-            }}</p>
-          <p>Продолжительность стейкинга: {{ Number(contractStats.stakingDuration) / 86400 }} дней</p>
-          <p>Токен стейкинга: {{ contractStats.stakingToken }}</p>
-          <p>Токен наград: {{ contractStats.rewardsToken }}</p>
-          <p>Наград выдано: {{ formatBigInt(contractStats.totalClaimedRewards) }}</p>
-        </div>
+<!--        <div v-if="contractStats" class="stats-box">-->
+<!--          <p>Сумма сбора: {{ formatBigInt(contractStats.maxStakingAmount) }}</p>-->
+<!--          <p>Всего застейкано: {{ formatBigInt(contractStats.totalStaked) }}</p>-->
+<!--          <p>Всего наград: {{ formatBigInt(contractStats.totalRewards) }}</p>-->
+<!--          <p>Количество стейкеров: {{ formatBigInt(contractStats.stakersCount, 0) }}</p>-->
+<!--          <p>Время начала стейкинга: {{-->
+<!--              new Date(Number(contractStats.stakingStartTime) * 1000).toLocaleString()-->
+<!--            }}</p>-->
+<!--          <p>Продолжительность стейкинга: {{ Number(contractStats.stakingDuration) / 86400 }} дней</p>-->
+<!--          <p>Токен стейкинга: {{ contractStats.stakingToken }}</p>-->
+<!--          <p>Токен наград: {{ contractStats.rewardsToken }}</p>-->
+<!--          <p>Наград выдано: {{ formatBigInt(contractStats.totalClaimedRewards) }}</p>-->
+<!--        </div>-->
 
 
-        <div v-if="userInfo" class="user-box">
-          <p>Адрес кошелька: {{ walletAddress }}</p>
-          <p>Сумма стейка: {{ formatBigInt(userInfo.amount) }}</p>
-          <p>Награда: {{ formatBigInt(userInfo.reward) }}</p>
-          <p>Награды собраны: {{ userInfo.hasWithdrawn ? 'Да' : 'Нет' }}</p>
-        </div>
+<!--        <div v-if="userInfo" class="user-box">-->
+<!--          <p>Адрес кошелька: {{ walletAddress }}</p>-->
+<!--          <p>Сумма стейка: {{ formatBigInt(userInfo.amount) }}</p>-->
+<!--          <p>Награда: {{ formatBigInt(userInfo.reward) }}</p>-->
+<!--          <p>Награды собраны: {{ userInfo.hasWithdrawn ? 'Да' : 'Нет' }}</p>-->
+<!--        </div>-->
 
 
         <button v-if="!walletAddress" @click="connectWallet()" class="staking-form-button-connect-wallet button">Connect Wallet</button>
         <form class="staking-form" v-else>
-          <label class="staking-form-label">Amount</label>
+          <label class="staking-form-label">Amount {{userBalance}} UIC</label>
           <input class="staking-form-input" v-model="stakeAmount" type="text" required />
           <button v-if="!isApproved && isStakingActive" class="staking-form-button-approve button" type="button" :disabled="approving" @click="approve()">Approve</button>
           <button v-else class="staking-form-button-stake button" type="button" :disabled="!isStakingActive" @click="stake()">Stake</button>
@@ -90,8 +94,8 @@ const connectWallet = walletStore.connectWallet;
 
 const web3 = new Web3(window.ethereum);
 const stakingContract = new web3.eth.Contract(stakingAbi, props.contractAddress);
-const contractStats = ref(null);
-const userInfo = ref(null);
+const contractStats = ref({ totalStaked: 0});
+const userInfo = ref({ amount: 0, reward: 0});
 const stakeAmount = ref('');
 const status = ref('');
 const statusError = ref(false);
@@ -121,11 +125,11 @@ const canClaimAll = computed(() => {
 
     const unlockTimestamp = Number(contractStats.value.unlockTime) * 1000;
 
-    return !userInfo.value.hasWithdrawn && (contractStats.value.withdrawalsEnabled || unlockTimestamp < Date.now());
+    return userInfo.value.reward && !userInfo.value.hasWithdrawn && (contractStats.value.withdrawalsEnabled || unlockTimestamp < Date.now());
 });
 
 function formatBigInt(value, unit = 'ether') {
-  return web3.utils.fromWei(value, unit);
+  return web3.utils.fromWei(value || 0n, unit);
 }
 
 async function updateStats() {
