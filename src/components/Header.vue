@@ -11,7 +11,6 @@
 
       </div>
       <div class="header-panel">
-
 <!--        <nav class="navigation">-->
 <!--          <router-link to="/about">{{ $t('navAbout') }}</router-link>-->
 <!--        </nav>-->
@@ -21,9 +20,20 @@
 <!--        </div>-->
         <a href="https://pancakeswap.finance/swap?inputCurrency=0x55d398326f99059fF775485246999027B3197955&outputCurrency=0x12ce6A31AAA2e0f2efc653A838037a533BEcFF24" class="buy-button" target="_blank"><span>{{ $t('buyUic') }}</span></a>
         <button class="connect-button" v-if="!walletAddress" @click="connectWallet"><img src="/public/images/icon-wallet.png" class="img" alt=""/><span>{{ $t('connectWallet') }}</span></button>
-        <span v-if="walletAddress" class="connected-button">
+        <!-- Кнопка кошелька -->
+        <span v-if="walletAddress" class="connected-button" @click="showPanel = !showPanel">
           <img src="/public/images/icon-wallet.png" class="img" alt=""/>
         </span>
+
+        <!-- Выезжающая панель -->
+        <div class="wallet-panel" :class="{ 'visible': showPanel }">
+          <div class="wallet-panel-content">
+            <button class="close-button" @click="showPanel = false">×</button>
+            <p class="wallet-address">{{ walletAddress }}</p>
+            <button class="disconnect-button" @click="disconnectWallet">Disconnect Wallet</button>
+          </div>
+        </div>
+
       </div>
     </div>
   </header>
@@ -76,5 +86,17 @@ const walletAddress = computed(() => walletStore.walletAddress);
 const connectWallet = () => walletStore.connectWallet();
 
 const autoConnect = () => walletStore.autoConnect();
+
+
+
+
+const showPanel = ref(false);
+
+function disconnectWallet() {
+  localStorage.removeItem('walletAddress');
+  walletStore.walletAddress = '';
+  showPanel.value = false;
+}
+
 </script>
 

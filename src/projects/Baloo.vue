@@ -34,6 +34,9 @@
 <!--          </div>-->
 <!--        </div>-->
 
+
+            <StakingComponent months="8" contractAddress="0x349f3f6a6B6699AAB39E68eF3061584588D6E633" />
+
         <div class="project-stat-container">
           <div class="project-stat-item">
             <span class="project-stat-item-value">650k UIC</span>
@@ -94,7 +97,6 @@
           </div>
         </div>
 
-        <StakingComponent contractAddress="0x349f3f6a6B6699AAB39E68eF3061584588D6E633" />
 
       </div>
 

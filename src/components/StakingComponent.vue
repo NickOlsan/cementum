@@ -1,38 +1,68 @@
 <template>
     <div class="staking-container">
-        <h2>Информация о контракте</h2>
+      <div class="staking-container-a">
+        <div class="staking-container-stat">
+          <span class="staking-container-stat-name">Open</span>
+          <span class="staking-container-stat-value">Ends in {{ props.months }} months</span>
+        </div>
+        <div class="staking-container-stat">
+          <span class="staking-container-stat-name">Chain</span>
+          <span class="staking-container-stat-value">BNB</span>
+        </div>
+        <div class="staking-container-stat">
+          <span class="staking-container-stat-name">Stakes</span>
+          <span class="staking-container-stat-value">184,075.7 UIC</span>
+        </div>
+      </div>
+      <div class="staking-container-b">
+        <div class="staking-container-b-header">
+          <div class="staking-container-b-title">Unlock power of your $DAO tokens</div>
+          <div class="staking-container-b-sub-title">Stake in $DAO Vault to get $SPEED tokens!</div>
+        </div>
+        <div class="staking-container-b-body">
+          <div class="staking-container-b-body-row">
+            <span>Staked</span>
+            <span>0 UIC</span>
+          </div>
+          <div class="staking-container-b-body-row">
+            <span>Yield</span>
+            <span>0 UIC</span>
+          </div>
+        </div>
+
         <div v-if="contractStats" class="stats-box">
-            <p>Сумма сбора: {{ formatBigInt(contractStats.maxStakingAmount) }}</p>
-            <p>Всего застейкано: {{ formatBigInt(contractStats.totalStaked) }}</p>
-            <p>Всего наград: {{ formatBigInt(contractStats.totalRewards) }}</p>
-            <p>Количество стейкеров: {{ formatBigInt(contractStats.stakersCount, 0) }}</p>
-            <p>Время начала стейкинга: {{
-                    new Date(Number(contractStats.stakingStartTime) * 1000).toLocaleString()
-                }}</p>
-            <p>Продолжительность стейкинга: {{ Number(contractStats.stakingDuration) / 86400 }} дней</p>
-            <p>Токен стейкинга: {{ contractStats.stakingToken }}</p>
-            <p>Токен наград: {{ contractStats.rewardsToken }}</p>
-            <p>Наград выдано: {{ formatBigInt(contractStats.totalClaimedRewards) }}</p>
+          <p>Сумма сбора: {{ formatBigInt(contractStats.maxStakingAmount) }}</p>
+          <p>Всего застейкано: {{ formatBigInt(contractStats.totalStaked) }}</p>
+          <p>Всего наград: {{ formatBigInt(contractStats.totalRewards) }}</p>
+          <p>Количество стейкеров: {{ formatBigInt(contractStats.stakersCount, 0) }}</p>
+          <p>Время начала стейкинга: {{
+              new Date(Number(contractStats.stakingStartTime) * 1000).toLocaleString()
+            }}</p>
+          <p>Продолжительность стейкинга: {{ Number(contractStats.stakingDuration) / 86400 }} дней</p>
+          <p>Токен стейкинга: {{ contractStats.stakingToken }}</p>
+          <p>Токен наград: {{ contractStats.rewardsToken }}</p>
+          <p>Наград выдано: {{ formatBigInt(contractStats.totalClaimedRewards) }}</p>
         </div>
 
-        <h2>Ваша информация</h2>
+
         <div v-if="userInfo" class="user-box">
-            <p>Адрес кошелька: {{ walletAddress }}</p>
-            <p>Сумма стейка: {{ formatBigInt(userInfo.amount) }}</p>
-            <p>Награда: {{ formatBigInt(userInfo.reward) }}</p>
-            <p>Награды собраны: {{ userInfo.hasWithdrawn ? 'Да' : 'Нет' }}</p>
+          <p>Адрес кошелька: {{ walletAddress }}</p>
+          <p>Сумма стейка: {{ formatBigInt(userInfo.amount) }}</p>
+          <p>Награда: {{ formatBigInt(userInfo.reward) }}</p>
+          <p>Награды собраны: {{ userInfo.hasWithdrawn ? 'Да' : 'Нет' }}</p>
         </div>
 
-        <h2>Действия</h2>
-        <button v-if="!walletAddress" class="project-status-coming-soon" @click="connectWallet()">Connect Wallet</button>
-        <form v-else>
-            <label>Сумма для стейкинга</label>
-            <input v-model="stakeAmount" type="text" required />
-            <button v-if="!isApproved && isStakingActive" class="project-status-coming-soon" type="button" :disabled="approving" @click="approve()">Approve</button>
-            <button v-else class="project-status-coming-soon" type="button" :disabled="!isStakingActive" @click="stake()">Stake</button>
-            <button class="project-status-coming-soon" type="button" :disabled="!canClaimAll" @click="claimAll()">Claim all</button>
+
+        <button v-if="!walletAddress" @click="connectWallet()" class="staking-form-button-connect-wallet button">Connect Wallet</button>
+        <form class="staking-form" v-else>
+          <label class="staking-form-label">Amount</label>
+          <input class="staking-form-input" v-model="stakeAmount" type="text" required />
+          <button v-if="!isApproved && isStakingActive" class="staking-form-button-approve button" type="button" :disabled="approving" @click="approve()">Approve</button>
+          <button v-else class="staking-form-button-stake button" type="button" :disabled="!isStakingActive" @click="stake()">Stake</button>
+          <button class="staking-form-button-claim-all button" type="button" :disabled="!canClaimAll" @click="claimAll()">Claim all</button>
         </form>
-        <div class="status" :class="{ error: statusError, success: !statusError }">{{ status }}</div>
+        <div class="staking-message status" :class="{ error: statusError, success: !statusError }">{{ status }}</div>
+      </div>
     </div>
 </template>
 
@@ -47,7 +77,10 @@ const props = defineProps({
     contractAddress: {
         type: String,
         required: true
-    }
+    },
+    months: {
+      type: String,
+    },
 });
 
 const walletStore = useWalletStore();
