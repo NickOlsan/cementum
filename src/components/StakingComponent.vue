@@ -3,7 +3,7 @@
       <div class="staking-container-a">
         <div class="staking-container-stat">
           <span class="staking-container-stat-name">Open</span>
-          <span class="staking-container-stat-value">Ends in {{ props.months }} months</span>
+          <span class="staking-container-stat-value">Ends in 8 months</span>
         </div>
         <div class="staking-container-stat">
           <span class="staking-container-stat-name">Fundraising</span>
@@ -81,10 +81,7 @@ const props = defineProps({
     contractAddress: {
         type: String,
         required: true
-    },
-    months: {
-      type: String,
-    },
+    }
 });
 
 const walletStore = useWalletStore();

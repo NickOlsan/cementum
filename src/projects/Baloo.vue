@@ -35,7 +35,7 @@
 <!--        </div>-->
 
 
-            <StakingComponent months="8" contractAddress="0xbF810423E8444bb1F9857280eD49Ab1a702580E7" />
+            <StakingComponent contractAddress="0xbF810423E8444bb1F9857280eD49Ab1a702580E7" />
 
         <div class="project-stat-container">
           <div class="project-stat-item">
