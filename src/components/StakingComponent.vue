@@ -1,10 +1,18 @@
 <template>
+
+
+
     <div class="staking-container">
       <div class="staking-container-a">
-        <div class="staking-container-stat">
-          <span class="staking-container-stat-name">Open</span>
-          <span class="staking-container-stat-value">Ends in {{ Number(contractStats.stakingDuration) / 86400 }} day</span>
+        <div class="staking-container-stat" v-if="timeUntilStakingStartInDays !== 0">
+          <span class="staking-container-stat-name">Coming Soon</span>
+          <span class="staking-container-stat-value">Start in {{ timeUntilStakingStartInDays }} day<span v-if="timeUntilStakingStartInDays > 1">s</span></span>
         </div>
+        <div class="staking-container-stat" v-else>
+          <span class="staking-container-stat-name">Live</span>
+          <span class="staking-container-stat-value">Duration {{ Number(contractStats.stakingDuration) / 86400 }} day</span>
+        </div>
+
         <div class="staking-container-stat">
           <span class="staking-container-stat-name">Fundraising</span>
           <span class="staking-container-stat-value">{{ formatBigInt(contractStats?.maxStakingAmount) }} UIC</span>
@@ -56,16 +64,16 @@
 <!--          <p>Награды собраны: {{ userInfo.hasWithdrawn ? 'Да' : 'Нет' }}</p>-->
 <!--        </div>-->
 
+          <button v-if="!walletAddress" @click="connectWallet()" class="staking-form-button-connect-wallet button" :disabled="isBeforeStakingStart">Connect Wallet</button>
+          <form class="staking-form" v-else>
+            <label class="staking-form-label">Amount {{userBalance}} UIC</label>
+            <input class="staking-form-input" v-model="stakeAmount" type="text" required />
+            <button v-if="!isApproved && isStakingActive" class="staking-form-button-approve button" type="button" :disabled="approving" @click="approve()">Approve</button>
+            <button v-else class="staking-form-button-stake button" type="button" :disabled="!isStakingActive" @click="stake()">Stake</button>
+            <button class="staking-form-button-claim-all button" type="button" :disabled="!canClaimAll" @click="claimAll()">Claim all</button>
+          </form>
+          <div class="staking-message status" :class="{ error: statusError, success: !statusError }">{{ status }}</div>
 
-        <button v-if="!walletAddress" @click="connectWallet()" class="staking-form-button-connect-wallet button">Connect Wallet</button>
-        <form class="staking-form" v-else>
-          <label class="staking-form-label">Amount {{userBalance}} UIC</label>
-          <input class="staking-form-input" v-model="stakeAmount" type="text" required />
-          <button v-if="!isApproved && isStakingActive" class="staking-form-button-approve button" type="button" :disabled="approving" @click="approve()">Approve</button>
-          <button v-else class="staking-form-button-stake button" type="button" :disabled="!isStakingActive" @click="stake()">Stake</button>
-          <button class="staking-form-button-claim-all button" type="button" :disabled="!canClaimAll" @click="claimAll()">Claim all</button>
-        </form>
-        <div class="staking-message status" :class="{ error: statusError, success: !statusError }">{{ status }}</div>
       </div>
     </div>
 </template>
@@ -105,6 +113,7 @@ const isStakingActive = computed(() => {
   if (!contractStats.value || !stakeAmount.value) return false;
   const now = Math.floor(Date.now() / 1000);
   const start = Number(contractStats.value.stakingStartTime);
+
   const end = start + Number(contractStats.value.stakingDuration);
   let amountInWei;
   try {
@@ -112,9 +121,36 @@ const isStakingActive = computed(() => {
   } catch (e) {
     return false;
   }
+
   const bigAmount = BigInt(amountInWei);
   return now >= start && now <= end && bigAmount > BigInt(0) && bigAmount <= userBalance.value;
+
 });
+
+//timer start
+const timeUntilStakingStartInDays = computed(() => {
+  if (!contractStats.value || contractStats.value.stakingStartTime == null) return null;
+
+  const now = Math.floor(Date.now() / 1000);
+  const start = Number(contractStats.value.stakingStartTime);
+
+  if (now >= start) return 0;
+
+  const secondsLeft = start - now;
+  const daysLeft = Math.ceil(secondsLeft / (60 * 60 * 24));
+  return daysLeft;
+});
+
+const isBeforeStakingStart = computed(() => {
+  if (!contractStats.value || contractStats.value.stakingStartTime == null) return true;
+
+  const now = Math.floor(Date.now() / 1000);
+  const start = Number(contractStats.value.stakingStartTime);
+
+  return now < start;
+});
+//timer end
+
 const canClaimAll = computed(() => {
     if (!contractStats.value) {
         return false;
@@ -368,6 +404,9 @@ watch(stakeAmount, (newVal) => {
         console.log('Cleaned stakeAmount to:', cleaned);
     }
 });
+
+
+
 </script>
 
 <style scoped>

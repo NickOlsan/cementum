@@ -874,6 +874,11 @@ html,body{
 .staking-form-button-connect-wallet{
 
 }
+.staking-form-button-connect-wallet:disabled{
+    background: rgba(255,255,255,0.1);
+    margin:20px 0 0 0;
+    cursor: not-allowed;
+}
 .staking-message{
     padding:20px;
     text-align: center;
