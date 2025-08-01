@@ -18,21 +18,6 @@
 
 
       <div class="team-elements">
-        <a href="https://www.instagram.com/nick_olsan" target="_blank" class="team-element">
-          <div class="team-element-image"><img src="/images/team/-1.jpg"/></div>
-          <div class="team-element-name">Nick Olsan</div>
-          <div class="team-element-position">Developer</div>
-        </a>
-        <a href="https://www.instagram.com/alexander_builder" target="_blank" class="team-element">
-          <div class="team-element-image"><img src="/images/team/-2.jpg"/></div>
-          <div class="team-element-name">Alex Alexashenko</div>
-          <div class="team-element-position">-</div>
-        </a>
-        <a href="https://www.linkedin.com/in/oleh-sivalnov-8a0b89b7/?originalSubdomain=pl"  target="_blank" class="team-element">
-          <div class="team-element-image"><img src="/images/team/-3.jpg"/></div>
-          <div class="team-element-name">Oleh Sivalnov</div>
-          <div class="team-element-position">-</div>
-        </a>
         <a href="https://archingroup.com/en/about-us" target="_blank" class="team-element">
           <div class="team-element-image"><img src="/images/team/-4.jpg"/></div>
           <div class="team-element-name">Eugene Sivalnov</div>
@@ -43,20 +28,35 @@
           <div class="team-element-name">Ruslan Kozub</div>
           <div class="team-element-position">Blockchain engineer</div>
         </a>
+        <a href="https://www.instagram.com/nick_olsan" target="_blank" class="team-element">
+          <div class="team-element-image"><img src="/images/team/-1.jpg"/></div>
+          <div class="team-element-name">Nick Olsan</div>
+          <div class="team-element-position">Developer</div>
+        </a>
         <a href="https://www.instagram.com/dogma_group2021?igsh=MXNmdGlvNWh5ZWc0ag%3D%3D" target="_blank" class="team-element">
           <div class="team-element-image"><img src="/images/team/-6.jpg"/></div>
           <div class="team-element-name">Max Dogaru</div>
-          <div class="team-element-position">-</div>
-        </a>
-        <a href="https://www.instagram.com/viz.3d?igsh=YXUxZzBwcWVuN2ln" target="_blank" class="team-element">
-          <div class="team-element-image"><img src="/images/team/-7.jpg"/></div>
-          <div class="team-element-name">Sergio Kochmar</div>
-          <div class="team-element-position">-</div>
+          <div class="team-element-position">Principal Architect</div>
         </a>
         <a href="https://www.instagram.com/aleksei.khandozhko" target="_blank" class="team-element">
           <div class="team-element-image"><img src="/images/team/-8.jpg"/></div>
           <div class="team-element-name">Aleks Khandozhko</div>
-          <div class="team-element-position">-</div>
+          <div class="team-element-position">Design Director</div>
+        </a>
+        <a href="https://www.instagram.com/alexander_builder" target="_blank" class="team-element">
+          <div class="team-element-image"><img src="/images/team/-2.jpg"/></div>
+          <div class="team-element-name">Alex Alexashenko</div>
+          <div class="team-element-position">Senior Civil Engineer</div>
+        </a>
+        <a href="https://www.linkedin.com/in/oleh-sivalnov-8a0b89b7/?originalSubdomain=pl"  target="_blank" class="team-element">
+          <div class="team-element-image"><img src="/images/team/-3.jpg"/></div>
+          <div class="team-element-name">Oleh Sivalnov</div>
+          <div class="team-element-position">Delivery Manager</div>
+        </a>
+        <a href="https://www.instagram.com/viz.3d?igsh=YXUxZzBwcWVuN2ln" target="_blank" class="team-element">
+          <div class="team-element-image"><img src="/images/team/-7.jpg"/></div>
+          <div class="team-element-name">Sergio Kochmar</div>
+          <div class="team-element-position">Lead Architect</div>
         </a>
       </div>
 
