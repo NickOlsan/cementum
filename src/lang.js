@@ -91,6 +91,8 @@ export const messages = {
         metaTitleMriya: 'Mriya',
         metaTitleTempo: 'Tempo',
         metaTitleTwins: 'Twins',
+        partnerArchDescription: 'Text',
+
 
 
 
