@@ -611,10 +611,12 @@ html,body{
     justify-content:center;
 }
 .partner-element{
+    position: relative;
     margin:0 25px;
     padding:20px 40px;
     background: rgba(255,255,255,0.05);
     border-radius:7px;
+    cursor: pointer;
 }
 .partner-element-logo{
     display:block;
@@ -623,6 +625,13 @@ html,body{
 }
 .partner-element-logo img{
     border-radius: 50px;
+}
+.partner-element-icon{
+    position: absolute;
+    top:-10px;
+    right:-10px;
+    transform: translateX(-50%);
+    width: 40px;
 }
 .partner-element-name{
     display:block;

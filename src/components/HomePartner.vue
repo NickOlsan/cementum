@@ -14,6 +14,7 @@
         <img :src="partner.image" alt="" />
       </span>
         <span class="partner-element-name">{{ $t(partner.nameKey) }}</span>
+        <img src="/images/kyb.png" class="partner-element-icon img" alt=""/>
       </div>
     </div>
 
