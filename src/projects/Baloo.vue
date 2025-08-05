@@ -11,50 +11,9 @@
       </div>
       <div class="page-project-container">
 
-<!--        <div class="project-offer">-->
-<!--          <div class="project-offer-container">-->
-<!--            <div class="project-offer-sidebar">-->
-<!--              <div class="project-offer-sidebar-item">-->
-<!--                <div class="project-offer-sidebar-item-value">Open</div>-->
-<!--                <div class="project-offer-sidebar-item-name">{{ $t('status') }}</div>-->
-<!--              </div>-->
-<!--              <div class="project-offer-sidebar-item">-->
-<!--                <div class="project-offer-sidebar-item-value">500k UIC</div>-->
-<!--                <div class="project-offer-sidebar-item-name">{{ $t('fundraising') }}</div>-->
-<!--              </div>-->
-<!--              <div class="project-offer-sidebar-item">-->
-<!--                <div class="project-offer-sidebar-item-value">530k UIC</div>-->
-<!--                <div class="project-offer-sidebar-item-name">{{ $t('totalAllocation') }}</div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="project-offer-content">-->
-
-<!--            </div>-->
-
-<!--          </div>-->
-<!--        </div>-->
+        <StakingComponent contractAddress="0xbF810423E8444bb1F9857280eD49Ab1a702580E7" />
 
 
-            <StakingComponent contractAddress="0xbF810423E8444bb1F9857280eD49Ab1a702580E7" />
-
-        <div class="project-stat-container">
-          <div class="project-stat-item">
-            <span class="project-stat-item-value">650k UIC</span>
-            <span class="project-stat-item-name">{{ $t('fundraising') }}</span>
-          </div>
-          <div class="project-stat-item">
-            <span class="project-stat-item-value">-</span>
-            <span class="project-stat-item-name">{{ $t('realization') }}</span>
-          </div>
-          <div class="project-stat-item">
-            <span class="project-stat-item-value">-</span>
-            <span class="project-stat-item-name">{{ $t('duration') }}</span>
-          </div>
-          <div class="project-stat-item">
-            <span class="project-stat-item-value">-</span>
-            <span class="project-stat-item-name">{{ $t('roi') }}</span>
-          </div>
-        </div>
 
         <div class="project-timeline">
           <div class="project-timeline-title">{{ $t('timeLine') }}</div>

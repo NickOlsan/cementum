@@ -881,6 +881,7 @@ html,body{
     font-size: 20px;
     color: #fff;
     margin:0 0 15px 0;
+    line-height: 130%;
 }
 .staking-container-b-sub-title{
     font-size: 14px;
@@ -923,6 +924,13 @@ html,body{
     font-size:12px;
     color: #90a4ae;
     margin:0 0 6px 0;
+}
+.staking-form-label a{
+    margin:0 0 0 10px;
+    color: #42a5f5;
+}
+.staking-form-label a:hover{
+    text-decoration: underline;
 }
 .staking-form-input{
     display: flex;
@@ -981,6 +989,23 @@ html,body{
     font-size: 16px;
     color: #b0bec5;
 }
+@media (max-width: 1023px) {
+    .staking-container-a {
+        width: 100%;
+        padding: 0 0 20px 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .staking-container-b {
+        width: 100%;
+        padding: 0 0 20px 0;
+    }
+    .staking-container-stat{
+        width: 50%;
+        text-align: center;
+    }
+}
+
 @media (max-width: 1023px) {
     .project-stat-container{
        padding:0;

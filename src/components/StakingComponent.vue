@@ -28,8 +28,8 @@
       </div>
       <div class="staking-container-b">
         <div class="staking-container-b-header">
-          <div class="staking-container-b-title">Unlock power of your $DAO tokens</div>
-          <div class="staking-container-b-sub-title">Stake in $DAO Vault to get $SPEED tokens!</div>
+          <div class="staking-container-b-title">Unlock power of your UIC tokens</div>
+
         </div>
         <div class="staking-container-b-body">
           <div class="staking-container-b-body-row">
@@ -66,7 +66,8 @@
 
           <button v-if="!walletAddress" @click="connectWallet()" class="staking-form-button-connect-wallet button" :disabled="isBeforeStakingStart">Connect Wallet</button>
           <form class="staking-form" v-else>
-            <label class="staking-form-label">Amount {{userBalance}} UIC</label>
+
+            <label class="staking-form-label">Amount {{userBalance}} UIC <a v-if="!userBalance" href="https://pancakeswap.finance/swap?inputCurrency=0x55d398326f99059fF775485246999027B3197955&outputCurrency=0x12ce6A31AAA2e0f2efc653A838037a533BEcFF24" target="_blank">Buy UIC</a></label>
             <input class="staking-form-input" v-model="stakeAmount" type="text" required />
             <button v-if="!isApproved && isStakingActive" class="staking-form-button-approve button" type="button" :disabled="approving" @click="approve()">Approve</button>
             <button v-else class="staking-form-button-stake button" type="button" :disabled="!isStakingActive" @click="stake()">Stake</button>
