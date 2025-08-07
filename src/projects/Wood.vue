@@ -5,64 +5,14 @@
       <div class="project-banner" style="background: url('/images/projects/wood/banner.png');background-size: cover;">
         <img src="/images/rk.jpg" class="project-logo" alt="" title="">
         <div class="project-title">Wood</div>
-        <div class="project-status">
-          <span class="project-status-coming-soon">{{ $t('comingSoon') }}</span>
-        </div>
       </div>
       <div class="page-project-container">
 
-        <div class="staking-container">
-          <div class="staking-section">
-            <h2 class="staking-section-title">Deploy CementumStaking Contract</h2>
-            <div class="staking-field-container">
-            <form id="deployForm">
-                <label class="staking-field-label">Owner Address</label>
-                <div class="staking-field-controls">
-                  <input type="text" id="ownerAddress" class="staking-field-input" placeholder="0x..." required />
-                  <button type="submit" class="staking-field-button">Deploy Contract</button>
-                  <div class="status" id="deployStatus"></div>
-                </div>
-            </form>
-            </div>
-            <div class="staking-field-container">
-              <label for="connectContractAddress" class="staking-field-label">Or connect to existing contract:</label>
-              <div class="staking-field-controls">
-                <input type="text" id="connectContractAddress" placeholder="0x..." value="0xcd81995A0E402AA87C7656d457424Ab0E665D981" class="staking-field-input" />
-                <button id="connectContractBtn" class="staking-field-button">Connect Contract</button>
-                <div class="status" id="connectContractStatus"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="staking-section">
-            <h2 class="staking-section-title">Staking & Claim</h2>
-            <form id="stakeForm">
-              <div class="staking-field-container">
-                <label class="staking-field-label">Amount to Stake</label>
-                <div class="staking-field-controls">
-                  <input type="number" id="stakeAmount" class="staking-field-input" placeholder="1000000000000000000" required />
-                  <button type="submit" class="staking-field-button">Stake</button>
-                  <button type="button" id="claimAllBtn" class="staking-field-button">Claim All</button>
-                </div>
-              </div>
-              <div class="status" id="stakeStatus"></div>
-            </form>
-          </div>
-
-
-          <h2>Статистика контракта</h2>
-          <div id="statsBox" style="background:#f3f6fa;padding:16px;border-radius:8px;margin-bottom:24px;font-size:15px;"></div>
-          <h2>Ваша информация</h2>
-          <div id="userBox" style="background:#f3f6fa;padding:16px;border-radius:8px;margin-bottom:24px;font-size:15px;"></div>
-          <button id="refreshBtn" style="margin-bottom:32px;">Обновить статистику</button>
-          <div class="status" id="accountStatus"></div>
-
-
-        </div>
+        <StakingComponent contractAddress="0xac220007f3dbf5dF6eDB7789192f9C9f686a15f1" />
 
         <div class="project-stat-container">
           <div class="project-stat-item">
-            <span class="project-stat-item-value">350k UIC</span>
+            <span class="project-stat-item-value">350k $UIC</span>
             <span class="project-stat-item-name">{{ $t('fundraising') }}</span>
           </div>
           <div class="project-stat-item">
@@ -148,6 +98,7 @@ import 'lightgallery/css/lg-thumbnail.css'
 // Плагины
 import lgZoom from 'lightgallery/plugins/zoom'
 import lgThumbnail from 'lightgallery/plugins/thumbnail'
+import StakingComponent from "@/components/StakingComponent.vue";
 
 const activeTab = ref('tab1')
 

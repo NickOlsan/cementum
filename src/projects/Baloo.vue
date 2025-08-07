@@ -5,13 +5,10 @@
       <div class="project-banner" style="background: url('/images/projects/baloo/banner.png');background-size: cover;">
         <img src="/images/arch.jpg" class="project-logo" alt="" title="">
         <div class="project-title">Baloo</div>
-        <div class="project-status">
-          <span class="project-status-coming-soon">{{ $t('comingSoon') }}</span>
-        </div>
       </div>
       <div class="page-project-container">
 
-        <StakingComponent contractAddress="0xbF810423E8444bb1F9857280eD49Ab1a702580E7" />
+        <StakingComponent contractAddress="0x8488bd01fB3Bc2Ff7731C1fFBfBEB4a3d704a601" />
 
 
 

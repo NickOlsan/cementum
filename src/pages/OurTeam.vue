@@ -18,7 +18,7 @@
 
 
       <div class="team-elements">
-        <a href="https://archingroup.com/en/about-us" target="_blank" class="team-element">
+        <a href="https://www.linkedin.com/in/eugene-sivalnov-180bbb123" target="_blank" class="team-element">
           <div class="team-element-image"><img src="/images/team/-4.jpg"/></div>
           <div class="team-element-name">Eugene Sivalnov</div>
           <div class="team-element-position">CEO</div>

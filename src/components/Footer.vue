@@ -11,6 +11,7 @@
       <div class="footer-social">
         <a href="https://telegram.me//uic_community" target="_blank">{{ $t('telegram') }}</a>
         <a href="https://x.com/Cementum_UIC" target="_blank">X.com</a>
+        <a href="https://skynet.certik.com/tools/token-scan/bsc/0x12ce6A31AAA2e0f2efc653A838037a533BEcFF24" target="_blank">Audit</a>
         <a href="mailto:info@cementum.io" target="_blank">{{ $t('email') }}</a>
       </div>
     </div>

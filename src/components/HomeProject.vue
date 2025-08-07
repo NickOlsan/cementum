@@ -1,4 +1,21 @@
 <template>
+  <div class="live-project-container">
+    <div class="live-project-title">Live projects</div>
+    <div class="live-project-elements">
+      <router-link to="/baloo" class="live-project-element" style="background: url('/images/projects/baloo/cover.jpg');background-size: cover;">
+          <div class="live-project-element-status">LIVE</div>
+          <div class="live-project-element-brand"><img src="/images/arch.jpg" alt="" title=""/></div>
+          <div class="live-project-element-name">Baloo</div>
+          <div class="live-project-element-stake"><span>Stake $UIC</span></div>
+          <div class="live-project-element-widget-right-top">
+            <div class="live-project-element-chain"><img src="/images/bnb-logo.png" alt="" title=""/><span>BNB</span></div>
+            <div class="live-project-element-fundraising"><span>500K</span><small>$UIC STAKED</small></div>
+          </div>
+
+      </router-link>
+    </div>
+
+  </div>
   <div class="future-container">
     <div class="future-title">
       {{ $t('featuredTitle') }}
@@ -15,7 +32,7 @@
         </div>
         <div class="future-element-footer">
           <div class="future-element-price">
-            <span>350k UIC</span>
+            <span>350k $UIC</span>
             <small>{{ $t('fundraising') }}</small>
           </div>
           <div class="future-element-date">
@@ -38,7 +55,7 @@
         </div>
         <div class="future-element-footer">
           <div class="future-element-price">
-            <span>650k UIC</span>
+            <span>650k $UIC</span>
             <small>{{ $t('fundraising') }}</small>
           </div>
           <div class="future-element-date">
@@ -61,7 +78,7 @@
           </div>
           <div class="future-element-footer">
             <div class="future-element-price">
-              <span>410k UIC</span>
+              <span>410k $UIC</span>
               <small>{{ $t('fundraising') }}</small>
             </div>
             <div class="future-element-date">
@@ -84,11 +101,11 @@
         </div>
         <div class="future-element-footer">
           <div class="future-element-price">
-            <span>420k UIC</span>
+            <span>420k $UIC</span>
             <small>{{ $t('fundraising') }}</small>
           </div>
           <div class="future-element-date">
-            <span>680k UIC</span>
+            <span>680k $UIC</span>
             <small>{{ $t('realization') }}</small>
           </div>
           <div class="future-element-date">
@@ -111,11 +128,11 @@
         </div>
         <div class="future-element-footer">
           <div class="future-element-price">
-            <span>510k UIC</span>
+            <span>510k $UIC</span>
             <small>{{ $t('fundraising') }}</small>
           </div>
           <div class="future-element-date">
-            <span>680k UIC</span>
+            <span>680k $UIC</span>
             <small>{{ $t('realization') }}</small>
           </div>
           <div class="future-element-date">
@@ -138,11 +155,11 @@
         </div>
         <div class="future-element-footer">
           <div class="future-element-price">
-            <span>760k UIC</span>
+            <span>760k $UIC</span>
             <small>{{ $t('fundraising') }}</small>
           </div>
           <div class="future-element-date">
-            <span>1.1m UIC</span>
+            <span>1.1m $UIC</span>
             <small>{{ $t('realization') }}</small>
           </div>
           <div class="future-element-date">
@@ -165,11 +182,11 @@
         </div>
         <div class="future-element-footer">
           <div class="future-element-price">
-            <span>228k UIC</span>
+            <span>228k $UIC</span>
             <small>{{ $t('fundraising') }}</small>
           </div>
           <div class="future-element-date">
-            <span>370k UIC</span>
+            <span>370k $UIC</span>
             <small>{{ $t('realization') }}</small>
           </div>
           <div class="future-element-date">
@@ -192,11 +209,11 @@
         </div>
         <div class="future-element-footer">
           <div class="future-element-price">
-            <span>215k UIC</span>
+            <span>215k $UIC</span>
             <small>{{ $t('fundraising') }}</small>
           </div>
           <div class="future-element-date">
-            <span>365k UIC</span>
+            <span>365k $UIC</span>
             <small>{{ $t('realization') }}</small>
           </div>
           <div class="future-element-date">
@@ -219,11 +236,11 @@
         </div>
         <div class="future-element-footer">
           <div class="future-element-price">
-            <span>640k UIC</span>
+            <span>640k $UIC</span>
             <small>{{ $t('fundraising') }}</small>
           </div>
           <div class="future-element-date">
-            <span>890k UIC</span>
+            <span>890k $UIC</span>
             <small>{{ $t('realization') }}</small>
           </div>
           <div class="future-element-date">
@@ -246,11 +263,11 @@
         </div>
         <div class="future-element-footer">
           <div class="future-element-price">
-            <span>165k UIC</span>
+            <span>165k $UIC</span>
             <small>{{ $t('fundraising') }}</small>
           </div>
           <div class="future-element-date">
-            <span>245k UIC</span>
+            <span>245k $UIC</span>
             <small>{{ $t('realization') }}</small>
           </div>
           <div class="future-element-date">

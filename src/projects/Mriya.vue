@@ -46,11 +46,11 @@
 
         <div class="project-stat-container">
           <div class="project-stat-item">
-            <span class="project-stat-item-value">500k UIC</span>
+            <span class="project-stat-item-value">500k $UIC</span>
             <span class="project-stat-item-name">{{ $t('fundraising') }}</span>
           </div>
           <div class="project-stat-item">
-            <span class="project-stat-item-value">530k</span>
+            <span class="project-stat-item-value">530k $UIC</span>
             <span class="project-stat-item-name">{{ $t('totalAllocation') }}</span>
           </div>
           <div class="project-stat-item">

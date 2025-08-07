@@ -4,7 +4,7 @@
     <div class="header-container">
       <div class="logo">
         <router-link to="/">
-          <img src="/images/logo.svg" alt="" title="" />
+          <img src="/images/site-logo.svg" alt="" title="" />
           <span>Cementum</span>
           <small>United Investment Company</small>
         </router-link>

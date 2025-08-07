@@ -13,11 +13,11 @@
 
         <div class="project-stat-container">
           <div class="project-stat-item">
-            <span class="project-stat-item-value">640k UIC</span>
+            <span class="project-stat-item-value">640k $UIC</span>
             <span class="project-stat-item-name">{{ $t('fundraising') }}</span>
           </div>
           <div class="project-stat-item">
-            <span class="project-stat-item-value">890k UIC</span>
+            <span class="project-stat-item-value">890k $UIC</span>
             <span class="project-stat-item-name">{{ $t('realization') }}</span>
           </div>
           <div class="project-stat-item">

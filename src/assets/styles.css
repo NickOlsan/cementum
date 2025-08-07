@@ -442,6 +442,172 @@ html,body{
     }
 }
 /**/
+.live-project-container{
+    padding:0 10%;
+    margin:0 0 100px 0;
+}
+.live-project-title{
+    font-size:36px;
+    text-align:center;
+    line-height: 130%;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    color:#fff;
+    font-weight:700;
+    margin:0 0 40px 0;
+}
+.live-project-elements{
+
+}
+.live-project-element{
+    display: block;
+    position: relative;
+    padding:100px 0;
+    border-radius: 10px;
+    border:5px solid #1f272f;
+    transition: .3s;
+}
+.live-project-element:hover{
+    transform: scale(0.98,0.98);
+}
+.live-project-element-brand{
+    margin:0 auto 30px auto;
+    width: 100px;
+    border-radius: 50px;
+    overflow: hidden;
+}
+.live-project-element-brand img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+.live-project-element-name{
+    font-size: 52px;
+    color: #fff;
+    line-height: 130%;
+    font-weight: 500;
+    text-align: center;
+}
+.live-project-element-stake {
+    display: flex;
+    justify-content: center;
+    padding:40px 0 0 0;
+}
+.live-project-element-stake span{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    height: 50px;
+    padding:0 40px;
+    border-radius: 10px;
+    background: #42a5f5;
+    color: #fff;
+}
+.live-project-element-status{
+    position: absolute;
+    top:20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    height: 50px;
+    padding:0 20px;
+    border-radius: 25px;
+    background: #42a5f5;
+    color: #fff;
+    animation: blinking 1.5s infinite ease-in-out;
+}
+@keyframes blinking {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.live-project-element-widget-right-top{
+    position: absolute;
+    top:20px;
+    right:20px;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+.live-project-element-chain{
+    background: rgba(0,0,0,0.5);
+    padding:10px 20px;
+    border-radius: 5px;
+}
+.live-project-element-chain img{
+    width: 20px;
+    margin:0 auto 10px auto;
+}
+.live-project-element-chain span{
+    color: #fff;
+    text-align: center;
+    display: block;
+}
+.live-project-element-fundraising{
+    background: rgba(0,0,0,0.5);
+    padding:10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    margin:0 0 0 20px;
+}
+.live-project-element-fundraising span{
+    display: block;
+    font-size: 20px;
+    color: #fff;
+    margin:0 0 10px 0;
+}
+.live-project-element-fundraising small{
+    font-size: 14px;
+    color:#9a9ea5;
+}
+@media (max-width: 1023px) {
+    .live-project-container{
+        padding:0 20px;
+        margin:0 0 100px 0;
+    }
+    .live-project-title{
+        font-size:26px;
+    }
+    .live-project-element-status {
+        top: 5px;
+        left: 5px;
+        font-size: 14px;
+        height: 40px;
+        padding: 0 10px;
+    }
+    .live-project-element-widget-right-top {
+        top: 5px;
+        right: 5px;
+    }
+    .live-project-element-fundraising {
+        padding: 10px;
+        margin: 0 0 0 10px;
+    }
+    .live-project-element-fundraising span {
+        font-size: 16px;
+        margin: 0 0 5px 0;
+    }
+    .live-project-element-chain {
+        padding:10px;
+    }
+    .live-project-element-chain img {
+        width: 20px;
+        margin: 0 auto 4px auto;
+    }
+    .live-project-element-name {
+        font-size: 32px;
+    }
+}
+/**/
 .future-container{
     padding:0 10%;
     margin:0 0 150px 0;
@@ -453,7 +619,7 @@ html,body{
     letter-spacing:2px;
     color:#fff;
     font-weight:700;
-    margin:0 0 70px 0;
+    margin:0 0 40px 0;
 }
 .future-elements{
     display:flex;
@@ -863,9 +1029,20 @@ html,body{
     margin:0 0 5px 0;
 }
 .staking-container-stat-value{
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     color:#ccc;
     font-size: 16px;
+}
+.staking-container-stat-value img{
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin:0 10px 0 0;
+}
+.staking-container-stat-value span{
+    padding:3px 0 0 0;
 }
 .staking-container-b{
     width: calc(100% - 250px);
@@ -950,12 +1127,22 @@ html,body{
 .staking-form-button-stake{
 
 }
-.staking-form-button-claim-all:disabled{
+.staking-form-button-stake:disabled{
     background: rgba(255,255,255,0.1);
     margin:20px 0 0 0;
     cursor: not-allowed;
 }
 
+.staking-form-button-claim-all:disabled{
+    background: rgba(255,255,255,0.1);
+    margin:20px 0 0 0;
+    cursor: not-allowed;
+}
+@media (max-width: 1023px) {
+    .staking-container-stat-value{
+        justify-content: center;
+    }
+}
 
 
 
@@ -1001,7 +1188,7 @@ html,body{
         padding: 0 0 20px 0;
     }
     .staking-container-stat{
-        width: 50%;
+        width: 100%;
         text-align: center;
     }
 }

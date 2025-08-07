@@ -9,8 +9,15 @@
           <span class="staking-container-stat-value">Start in {{ timeUntilStakingStartInDays }} day<span v-if="timeUntilStakingStartInDays > 1">s</span></span>
         </div>
         <div class="staking-container-stat" v-else>
-          <span class="staking-container-stat-name">Live</span>
-          <span class="staking-container-stat-value">Duration {{ Number(contractStats.stakingDuration) / 86400 }} day</span>
+          <div v-if="userInfo.hasWithdrawn != true">
+            <span class="staking-container-stat-name">Live</span>
+            <span class="staking-container-stat-value">Duration {{ Number(contractStats.stakingDuration) / 86400 }} day</span>
+          </div>
+          <div v-else>
+            <span class="staking-container-stat-name">Completed</span>
+            <span class="staking-container-stat-value"></span>
+          </div>
+
         </div>
 
         <div class="staking-container-stat">
@@ -19,7 +26,7 @@
         </div>
         <div class="staking-container-stat">
           <span class="staking-container-stat-name">Chain</span>
-          <span class="staking-container-stat-value">BNB</span>
+          <span class="staking-container-stat-value"><img src="/images/bnb-logo.png" alt="" title=""/><span>BNB</span></span>
         </div>
         <div class="staking-container-stat">
           <span class="staking-container-stat-name">Stakes</span>
@@ -29,16 +36,15 @@
       <div class="staking-container-b">
         <div class="staking-container-b-header">
           <div class="staking-container-b-title">Unlock power of your UIC tokens</div>
-
         </div>
         <div class="staking-container-b-body">
           <div class="staking-container-b-body-row">
             <span>Staked</span>
-            <span>{{ formatBigInt(userInfo?.amount) }} UIC</span>
+            <span>{{ formatBigInt(userInfo?.amount) }} $UIC</span>
           </div>
           <div class="staking-container-b-body-row">
             <span>Yield</span>
-            <span>{{ formatBigInt(userInfo?.reward) }} UIC</span>
+            <span>{{ formatBigInt(userInfo?.reward) }} $UIC</span>
           </div>
         </div>
 
@@ -64,6 +70,7 @@
 <!--          <p>Награды собраны: {{ userInfo.hasWithdrawn ? 'Да' : 'Нет' }}</p>-->
 <!--        </div>-->
 
+        <div v-if="userInfo.hasWithdrawn != true">
           <button v-if="!walletAddress" @click="connectWallet()" class="staking-form-button-connect-wallet button" :disabled="isBeforeStakingStart">Connect Wallet</button>
           <form class="staking-form" v-else>
 
@@ -71,9 +78,15 @@
             <input class="staking-form-input" v-model="stakeAmount" type="text" required />
             <button v-if="!isApproved && isStakingActive" class="staking-form-button-approve button" type="button" :disabled="approving" @click="approve()">Approve</button>
             <button v-else class="staking-form-button-stake button" type="button" :disabled="!isStakingActive" @click="stake()">Stake</button>
+            <br/>
             <button class="staking-form-button-claim-all button" type="button" :disabled="!canClaimAll" @click="claimAll()">Claim all</button>
           </form>
           <div class="staking-message status" :class="{ error: statusError, success: !statusError }">{{ status }}</div>
+        </div>
+
+
+
+
 
       </div>
     </div>

@@ -6,7 +6,7 @@
     </div>
     <div class="welcome-elements">
       <div class="welcome-element">
-        <span class="welcome-element-value">4.3m UIC</span>
+        <span class="welcome-element-value">4.3m $UIC</span>
         <span class="welcome-element-name">{{ $t('welcomeName1') }}</span>
       </div>
       <div class="welcome-element">
