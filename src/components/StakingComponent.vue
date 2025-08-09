@@ -22,7 +22,7 @@
 
         <div class="staking-container-stat">
           <span class="staking-container-stat-name">Fundraising</span>
-          <span class="staking-container-stat-value">{{ formatBigInt(contractStats?.maxStakingAmount) }} UIC</span>
+          <span class="staking-container-stat-value">{{ formatBigInt(contractStats?.maxStakingAmount) }} {{ stakeTokenInfo.symbol }}</span>
         </div>
         <div class="staking-container-stat">
           <span class="staking-container-stat-name">Chain</span>
@@ -30,21 +30,21 @@
         </div>
         <div class="staking-container-stat">
           <span class="staking-container-stat-name">Stakes</span>
-          <span class="staking-container-stat-value">{{ formatBigInt(contractStats?.totalStaked) }} UIC</span>
+          <span class="staking-container-stat-value">{{ Number(formatBigInt(contractStats?.totalStaked)).toFixed(2) }} {{ stakeTokenInfo.symbol }}</span>
         </div>
       </div>
       <div class="staking-container-b">
         <div class="staking-container-b-header">
-          <div class="staking-container-b-title">Unlock power of your UIC tokens</div>
+          <div class="staking-container-b-title">Unlock power of your {{ stakeTokenInfo.symbol }} tokens</div>
         </div>
         <div class="staking-container-b-body">
           <div class="staking-container-b-body-row">
             <span>Staked</span>
-            <span>{{ formatBigInt(userInfo?.amount) }} $UIC</span>
+            <span>{{ Number(formatBigInt(userInfo?.amount)).toFixed(2) }} ${{ stakeTokenInfo.symbol }}</span>
           </div>
           <div class="staking-container-b-body-row">
             <span>Yield</span>
-            <span>{{ formatBigInt(userInfo?.reward) }} $UIC</span>
+            <span>{{ Number(formatBigInt(userInfo?.reward)).toFixed(2) }} ${{ rewardTokenInfo.symbol }}</span>
           </div>
         </div>
 
@@ -74,7 +74,12 @@
           <button v-if="!walletAddress" @click="connectWallet()" class="staking-form-button-connect-wallet button" :disabled="isBeforeStakingStart">Connect Wallet</button>
           <form class="staking-form" v-else>
 
-            <label class="staking-form-label">Amount {{userBalance}} UIC <a v-if="!userBalance" href="https://pancakeswap.finance/swap?inputCurrency=0x55d398326f99059fF775485246999027B3197955&outputCurrency=0x12ce6A31AAA2e0f2efc653A838037a533BEcFF24" target="_blank">Buy UIC</a></label>
+            <label class="staking-form-label">Amount {{formatBigInt(userBalance)}} {{ stakeTokenInfo.symbol }}
+                <a
+                    v-if="!userBalance"
+                    :href="`https://pancakeswap.finance/swap?inputCurrency=0x55d398326f99059fF775485246999027B3197955&outputCurrency=${contractStats.stakingToken}`"
+                    target="_blank"
+                >Buy {{ stakeTokenInfo.symbol }}</a></label>
             <input class="staking-form-input" v-model="stakeAmount" type="text" required />
             <button v-if="!isApproved && isStakingActive" class="staking-form-button-approve button" type="button" :disabled="approving" @click="approve()">Approve</button>
             <button v-else class="staking-form-button-stake button" type="button" :disabled="!isStakingActive" @click="stake()">Stake</button>
@@ -96,7 +101,7 @@
 import {ref, onMounted, watch, computed} from 'vue';
 import Web3 from 'web3';
 import {useWalletStore} from '../stores/wallet';
-import {stakingAbi, erc20Abi} from '../abis/stakingAbi.js';
+import {stakingAbi, tokenAbi} from '../abis/stakingAbi.js';
 import {storeToRefs} from "pinia";
 
 const props = defineProps({
@@ -123,6 +128,36 @@ const isApproved = ref(false);
 const approving = ref(false);
 let stakingTokenContract;
 const userBalance = ref(BigInt(0));
+const stakeTokenInfo = ref({});
+const rewardTokenInfo = ref({});
+
+async function getTokenInfo(tokenAddress) {
+  const cacheKey = `token_info_${tokenAddress}`;
+  const cachedInfo = localStorage.getItem(cacheKey);
+  
+  if (cachedInfo) {
+    return JSON.parse(cachedInfo);
+  }
+  
+  try {
+    const tokenContract = new web3.eth.Contract(tokenAbi, tokenAddress);
+    const [name, symbol, decimals] = await Promise.all([
+      tokenContract.methods.name().call(),
+      tokenContract.methods.symbol().call(),
+      tokenContract.methods.decimals().call()
+    ]);
+    
+    const tokenInfo = { name, symbol, decimals: Number(decimals) };
+    
+    localStorage.setItem(cacheKey, JSON.stringify(tokenInfo));
+    
+    return tokenInfo;
+  } catch (error) {
+    console.error(`Error fetching token info for ${tokenAddress}:`, error);
+    return { name: 'Unknown', symbol: 'UNK', decimals: 18 };
+  }
+}
+
 const isStakingActive = computed(() => {
   if (!contractStats.value || !stakeAmount.value) return false;
   const now = Math.floor(Date.now() / 1000);
@@ -191,7 +226,14 @@ async function updateStats() {
             stats[normalizedKey] = value;
         }
         contractStats.value = stats;
-        console.log('Processed stats:', stats);
+        if (stats.stakingToken && !stakeTokenInfo.value.name) {
+            stakeTokenInfo.value = await getTokenInfo(stats.stakingToken);
+        }
+        
+        if (stats.rewardsToken && !rewardTokenInfo.value.name) {
+            rewardTokenInfo.value = await getTokenInfo(stats.rewardsToken);
+        }
+        
     } catch (err) {
         console.error('updateStats error:', err);
         status.value = 'Ошибка загрузки статистики';
@@ -315,7 +357,7 @@ onMounted(async () => {
     await updateStats();
     if (contractStats.value && contractStats.value.stakingToken) {
       console.log('Creating stakingTokenContract with address:', contractStats.value.stakingToken);
-      stakingTokenContract = new web3.eth.Contract(erc20Abi, contractStats.value.stakingToken);
+      stakingTokenContract = new web3.eth.Contract(tokenAbi, contractStats.value.stakingToken);
       if (walletAddress.value) await checkAllowance();
     }
     await getUserInfo();
@@ -334,7 +376,7 @@ watch(contractStats, async (stats) => {
   if (stats && stats.stakingToken && walletAddress.value) {
     if (!stakingTokenContract) {
       console.log('Creating stakingTokenContract in contractStats watcher');
-      stakingTokenContract = new web3.eth.Contract(erc20Abi, stats.stakingToken);
+      stakingTokenContract = new web3.eth.Contract(tokenAbi, stats.stakingToken);
     }
     await checkAllowance();
   }
@@ -346,7 +388,7 @@ watch(walletAddress, async (newVal) => {
   if (contractStats.value && contractStats.value.stakingToken && newVal) {
     if (!stakingTokenContract) {
       console.log('Creating stakingTokenContract in walletAddress watcher');
-      stakingTokenContract = new web3.eth.Contract(erc20Abi, contractStats.value.stakingToken);
+      stakingTokenContract = new web3.eth.Contract(tokenAbi, contractStats.value.stakingToken);
     }
     await checkAllowance();
   }
