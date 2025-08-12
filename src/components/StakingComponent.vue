@@ -17,12 +17,11 @@
             <span class="staking-container-stat-name">Completed</span>
             <span class="staking-container-stat-value"></span>
           </div>
-
         </div>
 
         <div class="staking-container-stat">
           <span class="staking-container-stat-name">Fundraising</span>
-          <span class="staking-container-stat-value">{{ formatBigInt(contractStats?.maxStakingAmount) }} {{ stakeTokenInfo.symbol }}</span>
+          <span class="staking-container-stat-value">{{ formatBigInt(contractStats?.maxStakingAmount) }} ${{ stakeTokenInfo.symbol }}</span>
         </div>
         <div class="staking-container-stat">
           <span class="staking-container-stat-name">Chain</span>
@@ -30,7 +29,7 @@
         </div>
         <div class="staking-container-stat">
           <span class="staking-container-stat-name">Stakes</span>
-          <span class="staking-container-stat-value">{{ Number(formatBigInt(contractStats?.totalStaked)).toFixed(2) }} {{ stakeTokenInfo.symbol }}</span>
+          <span class="staking-container-stat-value">{{ Number(formatBigInt(contractStats?.totalStaked)).toFixed(2) }} ${{ stakeTokenInfo.symbol }}</span>
         </div>
       </div>
       <div class="staking-container-b">
