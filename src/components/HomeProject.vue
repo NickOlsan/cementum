@@ -3,7 +3,7 @@
     <div class="live-project-title">Live projects</div>
     <div class="live-project-elements">
       <router-link to="/baloo" class="live-project-element" style="background: url('/images/projects/baloo/cover.jpg');background-size: cover;">
-          <div class="live-project-element-status">LIVE</div>
+          <div class="live-project-element-status-live">LIVE</div>
           <div class="live-project-element-brand"><img src="/images/arch.jpg" alt="" title=""/></div>
           <div class="live-project-element-name">Baloo</div>
           <div class="live-project-element-stake"><span>Stake $UIC</span></div>

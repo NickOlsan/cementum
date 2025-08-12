@@ -10,6 +10,30 @@
 
         <StakingComponent contractAddress="0xac220007f3dbf5dF6eDB7789192f9C9f686a15f1" />
 
+        <div class="page-project-description">
+          <h1>Wood Project — Promising Real Estate Investment Opportunity</h1>
+          <h2>Secure Capital • Transparent Process • Attractive ROI</h2>
+          <ul>
+            <li>Funding Requirement: $350,000 in $UIC</li>
+            <li>Construction Timeline: 4–5 months</li>
+            <li>Sales Period: 1–2 months</li>
+            <li>Projected Gross Revenue: $505,000</li>
+          </ul>
+          <h2>Investment Overview</h2>
+          <p>The Wood Project presents a secure and well-structured real estate investment opportunity. Investor funds are held in staking for the entire project duration, ensuring capital security while generating passive staking rewards. Upon completion and sale, investors receive their full principal plus all accrued staking yields.</p>
+          <h2>Key Advantages</h2>
+          <ul>
+            <li>Capital Protection — Funds remain staked until project closure.</li>
+            <li>Short Timeline — Total duration of 5–7 months from start to exit.</li>
+            <li>Profit-Driven — Projected sale price significantly exceeds initial investment.</li>
+            <li>Dual Returns — Capital growth from property sale plus staking income.</li>
+          </ul>
+          <h2>ROI Potential</h2>
+          <p>With a projected sale value of $505,000 against a funding requirement of $350,000, the Wood Project is designed to deliver competitive returns within a concise investment cycle.</p>
+          <p>Join us to transform your capital into real estate gains backed by secure staking rewards.</p>
+        </div>
+
+
         <div class="project-stat-container">
           <div class="project-stat-item">
             <span class="project-stat-item-value">350k $UIC</span>

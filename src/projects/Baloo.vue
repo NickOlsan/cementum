@@ -10,6 +10,28 @@
 
         <StakingComponent contractAddress="0x203B987822d8Be3B1Ae119F9CED2D852F00089f5" />
 
+        <div class="page-project-description">
+          <h1>Baloo Project — High-Potential Real Estate Investment</h1>
+          <h2>Secure Capital • Transparent Process • Attractive ROI</h2>
+          <ul>
+            <li>Funding Requirement: \$650,000 in \$UIC</li>
+            <li>Construction Timeline: 7–8 months</li>
+            <li>Sales Period: 1–2 months</li>
+            <li>Projected Gross Revenue: \$945,000</li>
+          </ul>
+          <h2>Investment Overview</h2>
+          <p>The Baloo Project offers a structured and secure investment opportunity in the real estate sector. Investor funds are held in staking for the entire duration of the project, ensuring capital security while generating staking rewards. Upon project completion and property sale, investors receive their full principal along with accumulated staking yields.</p>
+          <h2>Key Advantages</h2>
+          <ul>
+            <li>* Capital Protection: Funds remain staked until project closure.</li>
+            <li>* Fixed Timeline: Total duration of 8–10 months.</li>
+            <li>* Profit-Driven: Targeted sale price exceeds construction cost by a significant margin.</li>
+            <li>* Dual Returns: Capital appreciation from property sale + staking rewards</li>
+          </ul>
+          <h2>ROI Potential</h2>
+          <p>With a projected sale value of \$945,000 against a \$650,000 investment requirement, the Baloo Project is positioned to deliver competitive returns within a short investment cycle.</p>
+          <p>Partner with us to turn strategic capital allocation into tangible profits.</p>
+        </div>
 
 
         <div class="project-timeline">

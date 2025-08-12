@@ -63,6 +63,28 @@
           </div>
         </div>
 
+        <div class="page-project-description">
+          <h1>Mriya Project — Successfully Delivered Real Estate Investment</h1>
+          <h2>Capital Secured • Proven Track Record • Attractive Returns</h2>
+          <ul>
+            <li>Investment Amount: $510,000 in $UIC</li>
+            <li>Construction Timeline: 8 months</li>
+            <li>Sales Status: Two sections already sold</li>
+            <li>Projected Gross Revenue: $685,000</li>
+          </ul>
+          <h2>Investment Overview</h2>
+          <p>The Mriya Project is a successfully completed real estate development with a proven track record. Initial investor funds of $510,000 were deployed over an 8-month construction period. With two sections already sold, the project is on track to deliver strong returns.</p>
+          <h2>Key Advantages</h2>
+          <ul>
+            <li>Capital Security — Funds were efficiently used to complete the project on schedule.</li>
+            <li>Sales Progress — Two sections sold, confirming market demand.</li>
+            <li>Attractive Returns — Projected gross revenue of $685,000 ensures profitable exit.</li>
+            <li>Transparency — Investors have clear visibility on sales and project milestones.</li>
+          </ul>
+          <h2>ROI Realization</h2>
+          <p>With a projected revenue of $685,000 from an initial investment of $510,000, the Mriya Project delivers a solid return within a proven timeframe.</p>
+          <p>Partner with us to leverage successful projects and realize tangible profits in real estate investment.</p>
+        </div>
 
         <div class="project-timeline">
           <div class="project-timeline-title">{{ $t('timeLine') }}</div>
