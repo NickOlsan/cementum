@@ -8,7 +8,7 @@
       </div>
       <div class="page-project-container">
 
-        <StakingComponent contractAddress="0x8488bd01fB3Bc2Ff7731C1fFBfBEB4a3d704a601" />
+        <StakingComponent contractAddress="0x203B987822d8Be3B1Ae119F9CED2D852F00089f5" />
 
 
 
