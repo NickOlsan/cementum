@@ -8,7 +8,7 @@
       </div>
       <div class="page-project-container">
 
-        <StakingComponent contractAddress="0xac220007f3dbf5dF6eDB7789192f9C9f686a15f1" />
+        <StakingComponent contractAddress="0x01A66144Fe13D9B0340cc809B2484372E54d4E92" />
 
         <div class="page-project-description">
           <h1>Wood Project — Promising Real Estate Investment Opportunity</h1>
