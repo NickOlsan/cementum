@@ -97,7 +97,7 @@
           </div>
           <div class="future-element-footer">
             <div class="future-element-price">
-              <span>410k $UIC</span>
+              <span>500k $UIC</span>
               <small>{{ $t('fundraising') }}</small>
             </div>
             <div class="future-element-date">
