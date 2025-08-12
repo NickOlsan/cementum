@@ -26,7 +26,7 @@
         </div>
         <div class="staking-container-stat">
           <span class="staking-container-stat-name">Chain</span>
-          <span class="staking-container-stat-value"><img src="/images/bnb-logo.png" alt="" title=""/><span>BNB</span></span>
+          <span class="staking-container-stat-value"><img src="/images/bnb-logo.png" alt="" title=""/><span>BSC</span></span>
         </div>
         <div class="staking-container-stat">
           <span class="staking-container-stat-name">Stakes</span>
@@ -134,11 +134,11 @@ const rewardTokenInfo = ref({});
 async function getTokenInfo(tokenAddress) {
   const cacheKey = `token_info_${tokenAddress}`;
   const cachedInfo = localStorage.getItem(cacheKey);
-  
+
   if (cachedInfo) {
     return JSON.parse(cachedInfo);
   }
-  
+
   try {
     const tokenContract = new web3.eth.Contract(tokenAbi, tokenAddress);
     const [name, symbol, decimals] = await Promise.all([
@@ -146,11 +146,11 @@ async function getTokenInfo(tokenAddress) {
       tokenContract.methods.symbol().call(),
       tokenContract.methods.decimals().call()
     ]);
-    
+
     const tokenInfo = { name, symbol, decimals: Number(decimals) };
-    
+
     localStorage.setItem(cacheKey, JSON.stringify(tokenInfo));
-    
+
     return tokenInfo;
   } catch (error) {
     console.error(`Error fetching token info for ${tokenAddress}:`, error);
@@ -229,14 +229,14 @@ async function updateStats() {
         if (stats.stakingToken && !stakeTokenInfo.value.name) {
             stakeTokenInfo.value = await getTokenInfo(stats.stakingToken);
         }
-        
+
         if (stats.rewardsToken && !rewardTokenInfo.value.name) {
             rewardTokenInfo.value = await getTokenInfo(stats.rewardsToken);
         }
-        
+
     } catch (err) {
         console.error('updateStats error:', err);
-        status.value = 'Ошибка загрузки статистики';
+        status.value = 'Error loading statistics';
         statusError.value = true;
     }
     console.log('updateStats ended');
@@ -260,7 +260,7 @@ async function getUserInfo() {
         console.log('Processed userInfo:', info);
     } catch (err) {
         console.error('getUserInfo error:', err);
-        status.value = 'Ошибка загрузки информации пользователя';
+        status.value = 'Error loading user information';
         statusError.value = true;
     }
     console.log('getUserInfo ended');
@@ -281,14 +281,14 @@ async function stake() {
         const gasPrice = await web3.eth.getGasPrice();
         await stakingContract.methods.stake(amountInWei).send({from: walletAddress.value, gas: gasWithBuffer, gasPrice: gasPrice});
         console.log('Stake transaction successful');
-        status.value = 'Стейк успешен';
+        status.value = 'The steak is a success';
         statusError.value = false;
         stakeAmount.value = '';
         await updateStats();
         await getUserInfo();
     } catch (err) {
         console.error('stake error:', err);
-        status.value = `Ошибка стейкинга: ${err.message}`;
+        status.value = `Staking error: ${err.message}`;
         statusError.value = true;
     }
     console.log('stake ended');
@@ -306,13 +306,13 @@ async function claimAll() {
         const gasPrice = await web3.eth.getGasPrice();
         await stakingContract.methods.claimAll().send({from: walletAddress.value, gas: gasWithBuffer, gasPrice: gasPrice});
         console.log('claimAll transaction successful');
-        status.value = 'Заявка наград успешна';
+        status.value = 'Award application successful';
         statusError.value = false;
         await updateStats();
         await getUserInfo();
     } catch (err) {
         console.error('claimAll error:', err);
-        status.value = `Ошибка заявки: ${err.message}`;
+        status.value = `Application error: ${err.message}`;
         statusError.value = true;
     }
     console.log('claimAll ended');
@@ -437,11 +437,11 @@ async function approve() {
     await stakingTokenContract.methods.approve(props.contractAddress, amountInWei).send({from: walletAddress.value, gas: gasWithBuffer, gasPrice: gasPrice});
     console.log('Approve transaction successful');
     await checkAllowance();
-    status.value = 'Аппрув успешен';
+    status.value = 'Approval successful';
     statusError.value = false;
   } catch (err) {
     console.error('approve error:', err);
-    status.value = `Ошибка аппрува: ${err.message}`;
+    status.value = `Approval error: ${err.message}`;
     statusError.value = true;
   }
   approving.value = false;

@@ -466,6 +466,7 @@ html,body{
     border-radius: 10px;
     border:5px solid #1f272f;
     transition: .3s;
+    margin:0 0 10px 0;
 }
 .live-project-element:hover{
     transform: scale(0.98,0.98);
@@ -504,7 +505,7 @@ html,body{
     background: #42a5f5;
     color: #fff;
 }
-.live-project-element-status{
+.live-project-element-status-live{
     position: absolute;
     top:20px;
     left: 20px;
@@ -516,6 +517,21 @@ html,body{
     padding:0 20px;
     border-radius: 25px;
     background: #42a5f5;
+    color: #fff;
+    animation: blinking 1.5s infinite ease-in-out;
+}
+.live-project-element-status-selling{
+    position: absolute;
+    top:20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    height: 50px;
+    padding:0 20px;
+    border-radius: 25px;
+    background: #ffa726;
     color: #fff;
     animation: blinking 1.5s infinite ease-in-out;
 }
@@ -1535,7 +1551,53 @@ html,body{
 }
 
 
-
+.toasty1{
+    position: fixed;
+    bottom: 0;
+    right:0;
+    z-index: 9;
+    animation-name: tab-loader;
+    animation-duration: 120s;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-play-state:running;
+}
+.toasty2{
+    position: fixed;
+    bottom: 0;
+    right:0;
+    z-index: 9;
+    animation-name: tab-loader;
+    animation-duration: 120s;
+    animation-delay: 30s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-play-state:running;
+}
+.toasty3{
+    position: fixed;
+    bottom: 0;
+    right:0;
+    z-index: 9;
+    animation-name: tab-loader;
+    animation-duration: 120s;
+    animation-delay: 60s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-play-state:running;
+}
+@-webkit-keyframes tab-loader {
+    0%{right:-100%;}
+    4%{right:-100%;}
+    4.5%{right:0;}
+    7%{right:0;}
+    7.5%{right:-100%;}
+    100%{right:-100%;}
+}
 
 
 

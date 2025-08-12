@@ -106,7 +106,10 @@
     </div>
     <Footer />
   </div>
+  <div class="toasty1"><img src="/images/projects/mriya/toasty1.png" alt="" class="img"></div>
 </template>
+
+
 
 <script setup>
 import Header from '@/components/Header.vue'

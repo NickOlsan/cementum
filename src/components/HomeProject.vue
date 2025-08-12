@@ -8,10 +8,29 @@
           <div class="live-project-element-name">Baloo</div>
           <div class="live-project-element-stake"><span>Stake $UIC</span></div>
           <div class="live-project-element-widget-right-top">
-            <div class="live-project-element-chain"><img src="/images/bnb-logo.png" alt="" title=""/><span>BNB</span></div>
-            <div class="live-project-element-fundraising"><span>500K</span><small>$UIC STAKED</small></div>
+            <div class="live-project-element-chain"><img src="/images/bnb-logo.png" alt="" title=""/><span>BSC</span></div>
+            <div class="live-project-element-fundraising"><span>650K</span><small>$UIC STAKED</small></div>
           </div>
-
+      </router-link>
+      <router-link to="/wood" class="live-project-element" style="background: url('/images/projects/wood/cover.jpg');background-size: cover;">
+        <div class="live-project-element-status-live">LIVE</div>
+        <div class="live-project-element-brand"><img src="/images/rk.jpg" alt="" title=""/></div>
+        <div class="live-project-element-name">Wood</div>
+        <div class="live-project-element-stake"><span>Stake $UIC</span></div>
+        <div class="live-project-element-widget-right-top">
+          <div class="live-project-element-chain"><img src="/images/bnb-logo.png" alt="" title=""/><span>BSC</span></div>
+          <div class="live-project-element-fundraising"><span>350K</span><small>$UIC STAKED</small></div>
+        </div>
+      </router-link>
+      <router-link to="/mriya" class="live-project-element" style="background: url('/images/projects/mriya/cover.jpg');background-size: cover;">
+        <div class="live-project-element-status-selling">SELLING</div>
+        <div class="live-project-element-brand"><img src="/images/arch.jpg" alt="" title=""/></div>
+        <div class="live-project-element-name">Mriya</div>
+        <div class="live-project-element-stake"><span>Stake $UIC</span></div>
+        <div class="live-project-element-widget-right-top">
+          <div class="live-project-element-chain"><img src="/images/bnb-logo.png" alt="" title=""/><span>BSC</span></div>
+          <div class="live-project-element-fundraising"><span>500k</span><small>$UIC STAKED</small></div>
+        </div>
       </router-link>
     </div>
 
