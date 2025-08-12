@@ -40,32 +40,9 @@
       {{ $t('featuredTitle') }}
     </div>
     <div class="future-elements">
-      <router-link class="future-element" to="/wood">
-        <div class="future-element-avatar">
-          <span class="future-element-label future-element-coming-soon">{{ $t('comingSoon') }}</span>
-          <img src="/images/projects/wood/preview.jpg" class="future-element-image img" alt="" title=""/>
-          <img src="/images/rk.jpg" class="future-element-brand" alt="" title=""/>
-        </div>
-        <div class="future-element-name">
-          Wood
-        </div>
-        <div class="future-element-footer">
-          <div class="future-element-price">
-            <span>350k $UIC</span>
-            <small>{{ $t('fundraising') }}</small>
-          </div>
-          <div class="future-element-date">
-            <span>-</span>
-            <small>{{ $t('duration') }}</small>
-          </div>
-        </div>
-        <div class="future-element-control">
-          <span class="future-element-control-more">{{ $t('details') }}</span>
-        </div>
-      </router-link>
       <router-link class="future-element" to="/baloo">
         <div class="future-element-avatar">
-          <span class="future-element-label future-element-coming-soon">{{ $t('comingSoon') }}</span>
+          <span class="future-element-label future-element-live">{{ $t('live') }}</span>
           <img src="/images/projects/baloo/preview.jpg" class="future-element-image img" alt="" title=""/>
           <img src="/images/arch.jpg" class="future-element-brand" alt="" title=""/>
         </div>
@@ -78,7 +55,30 @@
             <small>{{ $t('fundraising') }}</small>
           </div>
           <div class="future-element-date">
-            <span>-</span>
+            <span>7 month</span>
+            <small>{{ $t('duration') }}</small>
+          </div>
+        </div>
+        <div class="future-element-control">
+          <span class="future-element-control-more">{{ $t('details') }}</span>
+        </div>
+      </router-link>
+      <router-link class="future-element" to="/wood">
+        <div class="future-element-avatar">
+          <span class="future-element-label future-element-live">{{ $t('live') }}</span>
+          <img src="/images/projects/wood/preview.jpg" class="future-element-image img" alt="" title=""/>
+          <img src="/images/rk.jpg" class="future-element-brand" alt="" title=""/>
+        </div>
+        <div class="future-element-name">
+          Wood
+        </div>
+        <div class="future-element-footer">
+          <div class="future-element-price">
+            <span>350k $UIC</span>
+            <small>{{ $t('fundraising') }}</small>
+          </div>
+          <div class="future-element-date">
+            <span>4 month</span>
             <small>{{ $t('duration') }}</small>
           </div>
         </div>
