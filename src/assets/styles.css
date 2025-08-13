@@ -971,8 +971,14 @@ html,body{
     text-align: justify;
     margin:0 0 50px 0;
 }
-
-
+.page-project-description h1,
+.page-project-description h2,
+.page-project-description h3{
+    line-height: 140%;
+}
+.page-project-description ul li{
+    padding:6px 0;
+}
 
 
 
@@ -1047,7 +1053,7 @@ html,body{
     display: flex;
     flex-wrap: wrap;
     max-width: 800px;
-    margin:0 auto 75px auto;
+    margin:0 auto 40px auto;
 }
 .staking-container-a{
     width: 250px;
