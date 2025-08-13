@@ -214,11 +214,8 @@ function formatBigInt(value, unit = 'ether') {
 }
 
 async function updateStats() {
-    console.log('updateStats started');
-
     try {
         const rawStats = await stakingContract.methods.getContractStats().call();
-        console.log('rawStats:', rawStats);
         const stats = {};
         for (const [key, value] of Object.entries(rawStats)) {
             const normalizedKey = key.endsWith('_') ? key.slice(0, -1) : key;
@@ -238,48 +235,38 @@ async function updateStats() {
         status.value = 'Error loading statistics';
         statusError.value = true;
     }
-    console.log('updateStats ended');
 }
 
 async function getUserInfo() {
-    console.log('getUserInfo started for wallet:', walletAddress.value);
     if (!walletAddress.value) {
-        console.log('getUserInfo: No wallet address');
         return;
     }
     try {
         const rawInfo = await stakingContract.methods.getUserInfo(walletAddress.value).call();
-        console.log('rawInfo:', rawInfo);
         const info = {};
         for (const [key, value] of Object.entries(rawInfo)) {
             const normalizedKey = key.endsWith('_') ? key.slice(0, -1) : key;
             info[normalizedKey] = value;
         }
         userInfo.value = info;
-        console.log('Processed userInfo:', info);
     } catch (err) {
         console.error('getUserInfo error:', err);
         status.value = 'Error loading user information';
         statusError.value = true;
     }
-    console.log('getUserInfo ended');
 }
 
 async function stake() {
-    console.log('stake started with amount:', stakeAmount.value);
     if (!walletAddress.value) {
-        console.log('stake: No wallet address');
         return;
     }
     try {
         let cleanedAmount = stakeAmount.value;
         const amountInWei = web3.utils.toWei(cleanedAmount, 'ether');
-        console.log('amountInWei:', amountInWei);
         const estimatedGas = await stakingContract.methods.stake(amountInWei).estimateGas({from: walletAddress.value});
         const gasWithBuffer = Math.ceil(Number(estimatedGas) * 1.05);
         const gasPrice = await web3.eth.getGasPrice();
         await stakingContract.methods.stake(amountInWei).send({from: walletAddress.value, gas: gasWithBuffer, gasPrice: gasPrice});
-        console.log('Stake transaction successful');
         status.value = 'The steak is a success';
         statusError.value = false;
         stakeAmount.value = '';
@@ -290,13 +277,10 @@ async function stake() {
         status.value = `Staking error: ${err.message}`;
         statusError.value = true;
     }
-    console.log('stake ended');
 }
 
 async function claimAll() {
-    console.log('claimAll started');
     if (!walletAddress.value) {
-        console.log('claimAll: No wallet address');
         return;
     }
     try {
@@ -304,7 +288,6 @@ async function claimAll() {
         const gasWithBuffer = Math.ceil(Number(estimatedGas) * 1.05);
         const gasPrice = await web3.eth.getGasPrice();
         await stakingContract.methods.claimAll().send({from: walletAddress.value, gas: gasWithBuffer, gasPrice: gasPrice});
-        console.log('claimAll transaction successful');
         status.value = 'Award application successful';
         statusError.value = false;
         await updateStats();
@@ -314,31 +297,23 @@ async function claimAll() {
         status.value = `Application error: ${err.message}`;
         statusError.value = true;
     }
-    console.log('claimAll ended');
 }
 
 async function getUserBalance() {
-  console.log('getUserBalance started');
   if (!stakingTokenContract || !walletAddress.value) {
-    console.log('getUserBalance: Missing contract or wallet');
     return BigInt(0);
   }
   try {
     const balance = await stakingTokenContract.methods.balanceOf(walletAddress.value).call();
-    console.log('User balance:', balance);
     return BigInt(balance);
   } catch (err) {
     console.error('getUserBalance error:', err);
     return BigInt(0);
-  } finally {
-      console.log('getUserBalance ended');
   }
 }
 
 async function setMaxStakeAmount() {
-  console.log('setMaxStakeAmount started');
   if (!contractStats.value) {
-    console.log('setMaxStakeAmount: No contract stats');
     return;
   }
   const balance = await getUserBalance();
@@ -348,33 +323,25 @@ async function setMaxStakeAmount() {
   const capacity = maxStaking - totalStaked;
   const maxPossible = balance < capacity ? balance : capacity;
   stakeAmount.value = web3.utils.fromWei(maxPossible.toString(), 'ether');
-  console.log('Set stakeAmount to:', stakeAmount.value);
-  console.log('setMaxStakeAmount ended');
 }
 onMounted(async () => {
-    console.log('onMounted started');
     await updateStats();
     if (contractStats.value && contractStats.value.stakingToken) {
-      console.log('Creating stakingTokenContract with address:', contractStats.value.stakingToken);
       stakingTokenContract = new web3.eth.Contract(tokenAbi, contractStats.value.stakingToken);
       if (walletAddress.value) await checkAllowance();
     }
     await getUserInfo();
-    console.log('onMounted ended');
     await setMaxStakeAmount();
 });
 
 watch(walletAddress, async (newVal) => {
-    console.log('walletAddress watcher triggered with new value:', newVal);
     await getUserInfo();
     await setMaxStakeAmount();
 });
 
 watch(contractStats, async (stats) => {
-    console.log('contractStats watcher triggered with stats:', stats);
   if (stats && stats.stakingToken && walletAddress.value) {
     if (!stakingTokenContract) {
-      console.log('Creating stakingTokenContract in contractStats watcher');
       stakingTokenContract = new web3.eth.Contract(tokenAbi, stats.stakingToken);
     }
     await checkAllowance();
@@ -383,10 +350,8 @@ watch(contractStats, async (stats) => {
 });
 
 watch(walletAddress, async (newVal) => {
-    console.log('walletAddress watcher for allowance triggered with new value:', newVal);
   if (contractStats.value && contractStats.value.stakingToken && newVal) {
     if (!stakingTokenContract) {
-      console.log('Creating stakingTokenContract in walletAddress watcher');
       stakingTokenContract = new web3.eth.Contract(tokenAbi, contractStats.value.stakingToken);
     }
     await checkAllowance();
@@ -395,46 +360,34 @@ watch(walletAddress, async (newVal) => {
 });
 
 async function checkAllowance() {
-    console.log('checkAllowance started');
   if (!stakingTokenContract || !walletAddress.value) {
-      console.log('checkAllowance: Missing contract or wallet');
       return;
   }
   try {
     const result = await stakingTokenContract.methods.allowance(walletAddress.value, props.contractAddress).call();
-    console.log('Allowance result:', result);
     allowance.value = result;
     const amountInWei = web3.utils.toWei(stakeAmount.value || '0', 'ether');
-    console.log('amountInWei for check:', amountInWei);
     isApproved.value = result >= amountInWei;
-    console.log('isApproved:', isApproved.value);
   } catch (err) {
       console.error('checkAllowance error:', err);
   }
-    console.log('checkAllowance ended');
 }
 
 watch(stakeAmount, async (newVal) => {
-    console.log('stakeAmount watcher triggered with new value:', newVal);
   await checkAllowance();
 });
 
 async function approve() {
-    console.log('approve started with amount:', stakeAmount.value);
   if (!stakingTokenContract || !walletAddress.value) {
-      console.log('approve: Missing contract or wallet');
       return;
   }
   approving.value = true;
   try {
     const amountInWei = web3.utils.toWei(stakeAmount.value, 'ether');
-    console.log('approve amountInWei:', amountInWei);
     const estimatedGas = await stakingTokenContract.methods.approve(props.contractAddress, amountInWei).estimateGas({from: walletAddress.value});
     const gasWithBuffer = Math.ceil(Number(estimatedGas) * 1.05);
     const gasPrice = await web3.eth.getGasPrice();
-      console.log('approve amountInWei:', { amountInWei, estimatedGas, gasWithBuffer, gasPrice});
     await stakingTokenContract.methods.approve(props.contractAddress, amountInWei).send({from: walletAddress.value, gas: gasWithBuffer, gasPrice: gasPrice});
-    console.log('Approve transaction successful');
     await checkAllowance();
     status.value = 'Approval successful';
     statusError.value = false;
@@ -444,11 +397,9 @@ async function approve() {
     statusError.value = true;
   }
   approving.value = false;
-    console.log('approve ended');
 }
 
 watch(stakeAmount, (newVal) => {
-    console.log('stakeAmount cleaning watcher triggered with newVal:', newVal);
     let cleaned = newVal
         .replace(/[^0-9.]/g, '')
         .replace(/\./g, function (match, offset, string) {
@@ -456,11 +407,8 @@ watch(stakeAmount, (newVal) => {
         });
     if (cleaned !== newVal) {
         stakeAmount.value = cleaned;
-        console.log('Cleaned stakeAmount to:', cleaned);
     }
 });
-
-
 
 </script>
 
