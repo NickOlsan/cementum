@@ -112,10 +112,9 @@ const props = defineProps({
 
 const walletStore = useWalletStore();
 const {walletAddress} = storeToRefs(walletStore);
-console.log({walletAddress: walletAddress.value});
 const connectWallet = walletStore.connectWallet;
 
-const web3 = new Web3(window.ethereum);
+const web3 = new Web3('https://bsc-dataseed.bnbchain.org');
 const stakingContract = new web3.eth.Contract(stakingAbi, props.contractAddress);
 const contractStats = ref({ totalStaked: 0});
 const userInfo = ref({ amount: 0, reward: 0});
