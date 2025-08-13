@@ -382,17 +382,11 @@ async function approve() {
   }
   approving.value = true;
   try {
-      console.log('approve1');
-    const amountInWei = web3.utils.toWei(stakeAmount.value, 'ether');
-    const estimatedGas = await stakingTokenContract.methods.approve(props.contractAddress, amountInWei).estimateGas({from: walletAddress.value});
-      console.log('approve2');
+    const estimatedGas = await stakingTokenContract.methods.approve(props.contractAddress, contractStats.value.maxStakingAmount).estimateGas({from: walletAddress.value});
     const gasWithBuffer = Math.ceil(Number(estimatedGas) * 1.05);
     const gasPrice = await web3.eth.getGasPrice();
-      console.log('approve3');
-    await stakingTokenContract.methods.approve(props.contractAddress, amountInWei).send({from: walletAddress.value, gas: gasWithBuffer, gasPrice: gasPrice});
-      console.log('approve4');
+    await stakingTokenContract.methods.approve(props.contractAddress, contractStats.value.maxStakingAmount).send({from: walletAddress.value, gas: gasWithBuffer, gasPrice: gasPrice});
     await checkAllowance();
-      console.log('approve5');
     status.value = 'Approval successful';
     statusError.value = false;
   } catch (err) {
