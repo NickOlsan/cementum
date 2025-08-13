@@ -114,7 +114,7 @@ const walletStore = useWalletStore();
 const {walletAddress} = storeToRefs(walletStore);
 const connectWallet = walletStore.connectWallet;
 
-const web3 = new Web3('https://bsc-dataseed.bnbchain.org');
+const web3 = new Web3(window.ethereum || 'https://bsc-dataseed1.binance.org');
 const stakingContract = new web3.eth.Contract(stakingAbi, props.contractAddress);
 const contractStats = ref({ totalStaked: 0});
 const userInfo = ref({ amount: 0, reward: 0});
@@ -382,12 +382,17 @@ async function approve() {
   }
   approving.value = true;
   try {
+      console.log('approve1');
     const amountInWei = web3.utils.toWei(stakeAmount.value, 'ether');
     const estimatedGas = await stakingTokenContract.methods.approve(props.contractAddress, amountInWei).estimateGas({from: walletAddress.value});
+      console.log('approve2');
     const gasWithBuffer = Math.ceil(Number(estimatedGas) * 1.05);
     const gasPrice = await web3.eth.getGasPrice();
+      console.log('approve3');
     await stakingTokenContract.methods.approve(props.contractAddress, amountInWei).send({from: walletAddress.value, gas: gasWithBuffer, gasPrice: gasPrice});
+      console.log('approve4');
     await checkAllowance();
+      console.log('approve5');
     status.value = 'Approval successful';
     statusError.value = false;
   } catch (err) {
