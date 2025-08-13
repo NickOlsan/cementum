@@ -114,8 +114,8 @@ const walletStore = useWalletStore();
 const {walletAddress} = storeToRefs(walletStore);
 const connectWallet = walletStore.connectWallet;
 
-const web3 = new Web3(window.ethereum || 'https://bsc-dataseed1.binance.org');
-const stakingContract = new web3.eth.Contract(stakingAbi, props.contractAddress);
+let web3 = new Web3(window.ethereum || 'https://bsc-dataseed1.binance.org');
+let stakingContract = new web3.eth.Contract(stakingAbi, props.contractAddress);
 const contractStats = ref({ totalStaked: 0});
 const userInfo = ref({ amount: 0, reward: 0});
 const stakeAmount = ref('');
@@ -129,6 +129,15 @@ const userBalance = ref(BigInt(0));
 const stakeTokenInfo = ref({});
 const rewardTokenInfo = ref({});
 
+function updateWeb3Provider() {
+  if (window.ethereum) {
+    web3 = new Web3(window.ethereum);
+    stakingContract = new web3.eth.Contract(stakingAbi, props.contractAddress);
+    if (contractStats.value && contractStats.value.stakingToken) {
+      stakingTokenContract = new web3.eth.Contract(tokenAbi, contractStats.value.stakingToken);
+    }
+  }
+}
 async function getTokenInfo(tokenAddress) {
   const cacheKey = `token_info_${tokenAddress}`;
   const cachedInfo = localStorage.getItem(cacheKey);
@@ -327,31 +336,37 @@ onMounted(async () => {
     await updateStats();
     if (contractStats.value && contractStats.value.stakingToken) {
       stakingTokenContract = new web3.eth.Contract(tokenAbi, contractStats.value.stakingToken);
-      if (walletAddress.value) await checkAllowance();
+      if (walletAddress.value) {
+        updateWeb3Provider();
+        await checkAllowance();
+      }
     }
     await getUserInfo();
     await setMaxStakeAmount();
 });
 
+// Объединенный наблюдатель за walletAddress
 watch(walletAddress, async (newVal) => {
-    await getUserInfo();
-    await setMaxStakeAmount();
+    if (newVal) {
+        updateWeb3Provider();
+        await getUserInfo();
+
+        if (contractStats.value && contractStats.value.stakingToken) {
+            if (!stakingTokenContract) {
+                stakingTokenContract = new web3.eth.Contract(tokenAbi, contractStats.value.stakingToken);
+            }
+            await checkAllowance();
+        }
+        
+        await setMaxStakeAmount();
+    }
 });
 
+// Наблюдатель за изменениями в contractStats
 watch(contractStats, async (stats) => {
   if (stats && stats.stakingToken && walletAddress.value) {
     if (!stakingTokenContract) {
       stakingTokenContract = new web3.eth.Contract(tokenAbi, stats.stakingToken);
-    }
-    await checkAllowance();
-  }
-  await setMaxStakeAmount();
-});
-
-watch(walletAddress, async (newVal) => {
-  if (contractStats.value && contractStats.value.stakingToken && newVal) {
-    if (!stakingTokenContract) {
-      stakingTokenContract = new web3.eth.Contract(tokenAbi, contractStats.value.stakingToken);
     }
     await checkAllowance();
   }
@@ -373,6 +388,14 @@ async function checkAllowance() {
 }
 
 watch(stakeAmount, async (newVal) => {
+      let cleaned = newVal
+        .replace(/[^0-9.]/g, '')
+        .replace(/\./g, function (match, offset, string) {
+            return (string.indexOf('.') === offset) ? '.' : '';
+        });
+    if (cleaned !== newVal) {
+        stakeAmount.value = cleaned;
+    }
   await checkAllowance();
 });
 
@@ -396,17 +419,6 @@ async function approve() {
   }
   approving.value = false;
 }
-
-watch(stakeAmount, (newVal) => {
-    let cleaned = newVal
-        .replace(/[^0-9.]/g, '')
-        .replace(/\./g, function (match, offset, string) {
-            return (string.indexOf('.') === offset) ? '.' : '';
-        });
-    if (cleaned !== newVal) {
-        stakeAmount.value = cleaned;
-    }
-});
 
 </script>
 
