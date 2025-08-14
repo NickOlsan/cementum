@@ -84,6 +84,7 @@ export const messages = {
         //Projects
         metaTitleAndre: 'Andre',
         metaTitleBaloo: 'Baloo',
+        metaTitleWood: 'Wood',
         metaTitleChaletMarron: 'Marron',
         metaTitleGrande: 'Grande',
         metaTitleGym: 'Gym',
